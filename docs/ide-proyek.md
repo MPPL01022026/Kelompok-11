@@ -18,12 +18,12 @@ Kelompok mewawancarai pemilik/pengelola Kedai Pujasera untuk memahami kondisi us
 
 | Aspek | Hasil |
 |---|---|
-| Narasumber dan waktu | `[ISI: nama/jabatan narasumber, tanggal wawancara]` |
-| Jenis produk | Jus, es teh, minuman sachet, nasi ayam caplak, nasi goreng, dan menu lainnya `[ISI: lengkapi menu lain]` |
-| Cara pelanggan mengetahui menu dan harga saat ini | `[ISI dari hasil wawancara]` |
-| Media promosi yang sudah digunakan | `[ISI dari hasil wawancara, atau "belum ada"]` |
-| Kendala yang dirasakan pemilik | `[ISI dari hasil wawancara]` |
-| Harapan terhadap versi digital | Menampilkan menu, foto produk, harga, informasi kedai, dan informasi relevan lainnya `[ISI: tambahan harapan pemilik]` |
+| Narasumber dan waktu | `[ISI: nama/jabatan narasumber, 30 September 2026` |
+| Jenis produk | Jus, es teh, minuman sachet, nasi ayam caplak, nasi goreng. |
+| Cara pelanggan mengetahui menu dan harga saat ini | `Lihat menu di kedai` |
+| Media promosi yang sudah digunakan | `belum ada` |
+| Kendala yang dirasakan pemilik | `Kurangnya Promosi, dan pembeli hanya tau disitu hanya menjual jus dan minuman tanpa mengetahui menu lain` |
+| Harapan terhadap versi digital | Menampilkan menu, foto produk, harga, informasi kedai, dan informasi relevan lainnya` |
 
 ### Kelompok Produk
 
@@ -31,7 +31,6 @@ Kelompok mewawancarai pemilik/pengelola Kedai Pujasera untuk memahami kondisi us
 |---|---|---|
 | Minuman | Jus, es teh, minuman sachet | Nama, varian, harga, foto, keterangan singkat |
 | Makanan | Nasi ayam caplak, nasi goreng | Nama, harga, foto, keterangan singkat |
-| Menu lainnya | `[ISI: menu lain]` | Sama seperti di atas |
 
 ## Identifikasi Masalah
 
@@ -60,7 +59,7 @@ Alternatif yang kami bandingkan:
 | Daftar menu cetak | Sederhana, murah, mudah dibaca di tempat | Hanya terlihat di kedai; harga berubah harus cetak ulang |
 | Media sosial | Cepat dipakai, penggunanya banyak | Menu tercampur dengan unggahan lain sehingga sulit dicari |
 | Aplikasi mobile | Pengalaman pengguna lebih kaya | Harus dipasang; waktu dan biaya lebih besar |
-| **Website informasi** ✅ | Dibuka lewat peramban tanpa dipasang, tautan mudah dibagikan, isi bisa diperbarui | Perlu domain/hosting agar publik dan perlu pembaruan berkala |
+| **Website informasi**  | Dibuka lewat peramban tanpa dipasang, tautan mudah dibagikan, isi bisa diperbarui | Perlu domain/hosting agar publik dan perlu pembaruan berkala |
 
 Website dipilih karena paling sesuai dengan kebutuhan dan waktu yang tersedia. Saat ini ide baru sampai tahap perencanaan. Rincian fitur dan tampilan dibahas pada tahap analisis kebutuhan dan perancangan.
 
