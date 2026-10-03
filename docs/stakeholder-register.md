@@ -29,7 +29,7 @@ Pemetaan mengacu pada matriks pengaruh–kepentingan Mendelow (1981).
 
 | Stakeholder | Hal yang dikomunikasikan | Cara | Waktu |
 |---|---|---|---|
-| Pemilik/pengelola kedai | Kemajuan, konfirmasi menu, harga, dan rancangan | Bertemu langsung atau pesan singkat `[ISI: sesuaikan]` | Awal proyek, saat pengumpulan data, sebelum pengembangan, setelah pengujian |
+| Pemilik/pengelola kedai | Kemajuan, konfirmasi menu, harga, dan rancangan | Bertemu langsung` | Awal proyek, saat pengumpulan data, sebelum pengembangan, setelah pengujian |
 | Pelanggan | Masukan tentang tampilan dan kemudahan | Uji coba singkat atau kuesioner sederhana | Tahap pengujian |
 | Karyawan kedai | Menu dan harga yang berlaku di lapangan | Percakapan langsung | Tahap pengumpulan data |
 | Tim proyek | Pembagian tugas dan kemajuan | Grup pesan, pertemuan, dan GitHub | Rutin selama proyek |
