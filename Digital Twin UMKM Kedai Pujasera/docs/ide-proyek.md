@@ -18,7 +18,7 @@ Kelompok mewawancarai pemilik/pengelola Kedai Pujasera untuk memahami kondisi us
 
 | Aspek | Hasil |
 |---|---|
-| Narasumber dan waktu | `[ISI: nama/jabatan narasumber, 30 September 2026` |
+| Narasumber dan waktu | `Kak Rika, 30 September 2026` |
 | Jenis produk | Jus, es teh, minuman sachet, nasi ayam caplak, nasi goreng. |
 | Cara pelanggan mengetahui menu dan harga saat ini | `Lihat menu di kedai` |
 | Media promosi yang sudah digunakan | `belum ada` |
