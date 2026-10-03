@@ -58,7 +58,7 @@ Project Charter adalah dokumen ringkas yang menyatakan apa yang akan dikerjakan,
 
 | No | Tahap | Hasil utama | Waktu |
 |:-:|---|---|---|
-| 1 | Inisiasi | Ide proyek, hasil wawancara, Project Charter, Stakeholder Register | `` |
+| 1 | Inisiasi | Ide proyek, hasil wawancara, Project Charter, Stakeholder Register | `25 September 2026` |
 | 2 | Perencanaan | WBS, pembagian tugas, jadwal, repositori GitHub | `25 Sep 2026` |
 | 3 | Analisis kebutuhan | Data kedai dan dokumen kebutuhan | `26 Sep 2026` |
 | 4 | Perancangan | Struktur halaman dan rancangan tampilan | `27 Sep 2026` |
