@@ -24,7 +24,7 @@ Project Charter adalah dokumen ringkas yang menyatakan apa yang akan dikerjakan,
 
 | ✅ Termasuk | ❌ Tidak termasuk |
 |---|---|
-| Dokumen perencanaan (charter, stakeholder register, WBS) | Layanan pemesanan dan pembayaran online` |
+| Dokumen perencanaan (charter, stakeholder register, WBS) | Layanan pemesanan dan pembayaran online `[ISI: konfirmasi]` |
 | Pengumpulan data menu, harga, foto, dan informasi kedai | Pengelolaan stok dan pembukuan kedai |
 | Perancangan tampilan dan struktur halaman | Pengadaan peralatan atau perangkat kedai |
 | Pengembangan dan pengujian website informasi | Pengelolaan media sosial kedai |
@@ -39,7 +39,7 @@ Project Charter adalah dokumen ringkas yang menyatakan apa yang akan dikerjakan,
 ## Kriteria Keberhasilan (tahap perencanaan)
 
 1. Project Charter, Stakeholder Register, dan WBS tersusun lengkap dan dipahami seluruh anggota.
-2. Ruang lingkup tidak dikeberatkan oleh pemilik/pengelola kedai`.
+2. Ruang lingkup tidak dikeberatkan oleh pemilik/pengelola kedai `[ISI: konfirmasi bila dilakukan]`.
 3. Repositori GitHub dibuat dan dapat diakses seluruh anggota.
 4. Pembagian tugas telah disepakati.
 
@@ -58,10 +58,10 @@ Project Charter adalah dokumen ringkas yang menyatakan apa yang akan dikerjakan,
 
 | No | Tahap | Hasil utama | Waktu |
 |:-:|---|---|---|
-| 1 | Inisiasi | Ide proyek, hasil wawancara, Project Charter, Stakeholder Register | `25 September 2026` |
-| 2 | Perencanaan | WBS, pembagian tugas, jadwal, repositori GitHub | `25 Sep 2026` |
-| 3 | Analisis kebutuhan | Data kedai dan dokumen kebutuhan | `26 Sep 2026` |
-| 4 | Perancangan | Struktur halaman dan rancangan tampilan | `27 Sep 2026` |
-| 5 | Pengembangan | Website informasi Kedai Pujasera | `-` |
-| 6 | Pengujian | Hasil pengujian dan perbaikan | `-` |
-| 7 | Dokumentasi | Laporan, panduan, dan bahan presentasi | `-` |
+| 1 | Inisiasi | Ide proyek, hasil wawancara, Project Charter, Stakeholder Register | `[ISI]` |
+| 2 | Perencanaan | WBS, pembagian tugas, jadwal, repositori GitHub | `[ISI]` |
+| 3 | Analisis kebutuhan | Data kedai dan dokumen kebutuhan | `[ISI]` |
+| 4 | Perancangan | Struktur halaman dan rancangan tampilan | `[ISI]` |
+| 5 | Pengembangan | Website informasi Kedai Pujasera | `[ISI]` |
+| 6 | Pengujian | Hasil pengujian dan perbaikan | `[ISI]` |
+| 7 | Dokumentasi | Laporan, panduan, dan bahan presentasi | `[ISI]` |
