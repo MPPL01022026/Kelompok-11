@@ -6,9 +6,9 @@
 
 **Merencanakan versi digital UMKM Kedai Pujasera: menu, foto produk, harga, dan informasi kedai dalam satu website.**
 
-![Status](https://img.shields.io/badge/status-tahap%20perencanaan-orange?style=for-the-badge)
-![Kelompok](https://img.shields.io/badge/kelompok-11-blue?style=for-the-badge)
-![Prodi](https://img.shields.io/badge/Teknik%20Informatika-Universitas%20Samudra-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-tahap%20perencanaan-1565c0?style=for-the-badge)
+![Kelompok](https://img.shields.io/badge/kelompok-11-0288d1?style=for-the-badge)
+![Prodi](https://img.shields.io/badge/Teknik%20Informatika-Universitas%20Samudra-00b4ff?style=for-the-badge)
 
 </div>
 
@@ -30,10 +30,10 @@ Proyek ini adalah tugas kelompok dengan studi kasus Kedai Pujasera. Kami berenca
 
 | No | Nama | NIM | GitHub | Peran utama |
 |:-:|---|---|---|---|
-| 1 | Andi Saputra | `230504081` | `Andi` | Inisiasi, skenario pengujian, laporan proyek |
-| 2 | Muhammad Hafiz Akbar | `230504077` | `Hafiz` | Perencanaan, repositori GitHub, dokumentasi repo |
-| 3 | Arya Diansyah | `230504063` | `Arya` | Perancangan, tampilan halaman, pengujian |
-| 4 | Kharisa Ariyana | `230504069` | `Ica` | Analisis kebutuhan, konten kedai, presentasi |
+| 1 | Andi Saputra | `[ISI NIM]` | `[ISI username]` | Inisiasi, skenario pengujian, laporan proyek |
+| 2 | Muhammad Hafiz Akbar | `[ISI NIM]` | `[ISI username]` | Perencanaan, repositori GitHub, dokumentasi repo |
+| 3 | Arya Diansyah | `[ISI NIM]` | `[ISI username]` | Perancangan, tampilan halaman, pengujian |
+| 4 | Kharisa Ariyana | `[ISI NIM]` | `[ISI username]` | Analisis kebutuhan, konten kedai, presentasi |
 
 **Program Studi:** Teknik Informatika &nbsp;|&nbsp; **Fakultas:** Sains dan Teknologi &nbsp;|&nbsp; **Universitas:** Universitas Samudra
 **Mata kuliah:** `[ISI nama mata kuliah]` &nbsp;|&nbsp; **Dosen pengampu:** `[ISI nama dosen]`
@@ -57,11 +57,11 @@ Proyek ini adalah tugas kelompok dengan studi kasus Kedai Pujasera. Kami berenca
 ```mermaid
 flowchart LR
     A[Inisiasi] --> B[Perencanaan] --> C[Analisis Kebutuhan] --> D[Perancangan] --> E[Pengembangan] --> F[Pengujian] --> G[Dokumentasi]
-    style A fill:#f5af19,stroke:#c77700,color:#000
-    style B fill:#f5af19,stroke:#c77700,color:#000
+    style A fill:#4fc3f7,stroke:#0277bd,color:#000
+    style B fill:#4fc3f7,stroke:#0277bd,color:#000
 ```
 
-Warna kuning menandai tahap yang sedang dikerjakan saat ini.
+Warna biru muda menandai tahap yang sedang dikerjakan saat ini.
 
 ### ✅ Progres
 
