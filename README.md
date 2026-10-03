@@ -30,13 +30,13 @@ Proyek ini adalah tugas kelompok dengan studi kasus Kedai Pujasera. Kami berenca
 
 | No | Nama | NIM | GitHub | Peran utama |
 |:-:|---|---|---|---|
-| 1 | Andi Saputra | `[ISI NIM]` | `[ISI username]` | Inisiasi, skenario pengujian, laporan proyek |
-| 2 | Muhammad Hafiz Akbar | `[ISI NIM]` | `[ISI username]` | Perencanaan, repositori GitHub, dokumentasi repo |
-| 3 | Arya Diansyah | `[ISI NIM]` | `[ISI username]` | Perancangan, tampilan halaman, pengujian |
-| 4 | Kharisa Ariyana | `[ISI NIM]` | `[ISI username]` | Analisis kebutuhan, konten kedai, presentasi |
+| 1 | Andi Saputra | `230504081` | `Andi` | Inisiasi, skenario pengujian, laporan proyek |
+| 2 | Muhammad Hafiz Akbar | `230504077` | `Apizzz2` | Perencanaan, repositori GitHub, dokumentasi repo |
+| 3 | Arya Diansyah | `230504063` | `Aryajisung11` | Perancangan, tampilan halaman, pengujian |
+| 4 | Kharisa Ariyana | `230504069` | `Ica` | Analisis kebutuhan, konten kedai, presentasi |
 
 **Program Studi:** Teknik Informatika &nbsp;|&nbsp; **Fakultas:** Sains dan Teknologi &nbsp;|&nbsp; **Universitas:** Universitas Samudra
-**Mata kuliah:** `[ISI nama mata kuliah]` &nbsp;|&nbsp; **Dosen pengampu:** `[ISI nama dosen]`
+**Mata kuliah:** `Manajemen Proyek Perangkat Lunak` &nbsp;|&nbsp; **Dosen pengampu:** `Cut Alna Fadhilla, S.Kom., M.Sc`
 
 ---
 
@@ -115,6 +115,6 @@ Penjelasan lengkap ada di [docs/git-github.md](docs/git-github.md).
 
 <img src="assets/footer.svg" alt="" width="100%">
 
-Dibuat dengan ☕ oleh **Kelompok 11** · Teknik Informatika · Universitas Samudra · 2026
+Dibuat oleh **Kelompok 11** · Teknik Informatika · Universitas Samudra · 2026
 
 </div>
