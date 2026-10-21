@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jadwal Proyek Kedai Pujasera — Kelompok 11</title>
+<meta name="description" content="Gantt chart interaktif, estimasi manday, biaya, dan risiko proyek Kedai Pujasera Digital.">
+<style>
+:root{--bg:#f3f8ff;--panel:#fff;--ink:#0b1f4d;--mut:#5b6b8c;--line:#d5e3f7;--b1:#0d47a1;--b2:#1565c0;--b3:#1e88e5;--b4:#42a5f5;--b5:#bbdefb;--gold:#ffc107;--red:#e53935;--grn:#26a69a;--wk:#eef3fa;--shadow:0 1px 0 rgba(13,71,161,.08),0 8px 24px rgba(13,71,161,.08)}
+@media (prefers-color-scheme:dark){:root{--bg:#07142e;--panel:#0d2150;--ink:#e6f0ff;--mut:#9db4dc;--line:#1c3a7a;--b5:#17306b;--wk:#0b1c42;--shadow:0 8px 24px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.mono{font-family:"Courier New",Courier,monospace}
+header{background:linear-gradient(135deg,#0a2a66,#1565c0 60%,#29b6f6);color:#fff;padding:28px 20px 70px;position:relative;overflow:hidden}
+header:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:16px 16px;mask-image:linear-gradient(#000,transparent)}
+.wrap{max-width:1240px;margin:0 auto;position:relative}
+h1{margin:0;font:800 clamp(24px,4.4vw,40px)/1.1 "Courier New",monospace;letter-spacing:1px;text-shadow:3px 3px 0 #0a2457}
+.sub{margin:8px 0 0;opacity:.92}
+.blink{animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.badge{background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.45);padding:3px 10px;font:700 12px "Courier New",monospace}
+main{max-width:1240px;margin:-48px auto 40px;padding:0 20px;position:relative}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.card{background:var(--panel);border:2px solid var(--line);box-shadow:var(--shadow);padding:14px 16px}
+.stat b{display:block;font:800 clamp(17px,5vw,26px) "Courier New",monospace;color:var(--b2);overflow-wrap:anywhere}
+@media (prefers-color-scheme:dark){.stat b{color:#6cb8ff}}
+.stat span{color:var(--mut);font-size:12px}
+nav.tabs{display:flex;gap:6px;margin:18px 0 12px;flex-wrap:wrap;position:sticky;top:0;z-index:30;background:var(--bg);padding:8px 0}
+.tab{border:2px solid var(--b2);background:var(--panel);color:var(--ink);padding:8px 16px;font:700 13px "Courier New",monospace;cursor:pointer}
+.tab[aria-selected=true]{background:var(--b2);color:#fff;box-shadow:3px 3px 0 var(--b1)}
+.tab:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+section.pane{display:none}section.pane.on{display:block}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.chip{border:2px solid var(--line);background:var(--panel);color:var(--ink);padding:3px 10px;cursor:pointer;font:600 12px system-ui}
+.chip.on{background:var(--b3);border-color:var(--b1);color:#fff}
+select,input[type=search],input[type=number]{background:var(--panel);color:var(--ink);border:2px solid var(--line);padding:5px 8px;font:inherit}
+.btn{background:var(--b2);color:#fff;border:2px solid var(--b1);padding:5px 12px;cursor:pointer;font:700 12px "Courier New",monospace}
+.detail{min-height:62px;border-left:6px solid var(--b3);margin-bottom:10px}
+.detail h3{margin:0 0 2px;font-size:15px}.detail p{margin:0;color:var(--mut)}
+.gwrap{background:var(--panel);border:2px solid var(--line);box-shadow:var(--shadow);overflow:auto;max-height:76vh;position:relative}
+.ghead,.grow{display:flex;min-width:max-content}
+.ghead{position:sticky;top:0;z-index:12;background:var(--b1);color:#fff}
+.lab{position:sticky;left:0;z-index:8;width:var(--lw);min-width:var(--lw);padding:0 10px;display:flex;align-items:center;gap:8px;background:var(--panel);border-right:2px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ghead .lab{background:var(--b1);z-index:14;font:700 12px "Courier New",monospace}
+.grow{height:30px;border-bottom:1px solid var(--line);cursor:pointer}
+.grow:hover .lab{background:var(--b5)}
+.grow.grp{background:var(--b5)}.grow.grp .lab{background:var(--b5);font-weight:800}
+.grow.sel .lab{box-shadow:inset 4px 0 0 var(--gold)}
+.code{font:700 11px "Courier New",monospace;color:var(--b3);min-width:28px}
+.lab span.t{overflow:hidden;text-overflow:ellipsis}
+.track{position:relative;height:100%}
+.days{display:flex}.day{width:var(--dw);min-width:var(--dw);text-align:center;font:11px "Courier New",monospace;border-left:1px solid rgba(255,255,255,.18);padding:1px 0}
+.mon{display:flex}.mon div{font:700 12px "Courier New",monospace;padding:3px 6px;border-left:1px solid rgba(255,255,255,.3);overflow:hidden;white-space:nowrap}
+.bar{position:absolute;top:6px;height:18px;background:var(--b3);border:2px solid var(--b1);box-shadow:2px 2px 0 rgba(10,36,87,.35);transition:transform .12s,filter .12s}
+.bar.rap{background:var(--grn);border-color:#00695c}
+.bar.sum{background:#0d2a6b;border-color:#06163a;top:9px;height:12px}
+.bar.pre{outline:3px solid #ff9800}.bar.suc{outline:3px solid #ab47bc}.bar.me{outline:3px solid var(--gold);transform:translateY(-1px)}
+.bar.dim{opacity:.25}
+.grow:hover .bar{filter:brightness(1.12)}
+.bar i{position:absolute;inset:0;font:700 10px/14px "Courier New",monospace;color:#fff;padding-left:4px;overflow:hidden;white-space:nowrap;font-style:normal}
+.ms{position:absolute;top:7px;width:16px;height:16px;background:var(--red);border:2px solid #7f0000;transform:rotate(45deg);margin-left:-8px}
+.mslab{position:absolute;top:6px;font:700 11px "Courier New",monospace;color:var(--red);white-space:nowrap}
+.gridlayer{position:absolute;top:0;bottom:0;pointer-events:none;z-index:1}
+.wkd{position:absolute;top:0;bottom:0;background:var(--wk)}
+.today{position:absolute;top:0;bottom:0;width:2px;background:var(--red);z-index:6}
+.today b{position:absolute;top:2px;left:4px;background:var(--red);color:#fff;font:700 10px "Courier New",monospace;padding:0 4px;white-space:nowrap}
+.grow .track{z-index:2}
+.legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--mut);font-size:12px;margin-top:8px}.legend i{display:inline-block;width:14px;height:10px;margin-right:5px;border:2px solid}
+.tip{position:fixed;z-index:99;pointer-events:none;background:#0a1f4d;color:#fff;border:2px solid #29b6f6;padding:8px 10px;max-width:310px;font-size:12px;box-shadow:4px 4px 0 rgba(0,0,0,.3);opacity:0;transition:opacity .08s}
+.tip b{font:700 12px "Courier New",monospace;color:#ffd23f}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--b1);color:#fff;font:700 12px "Courier New",monospace;white-space:nowrap}th.s{cursor:pointer}th.s:hover{background:var(--b3)}
+tbody tr:nth-child(even){background:var(--wk)}.tw{overflow:auto;background:var(--panel);border:2px solid var(--line)}
+.n{text-align:right;font-variant-numeric:tabular-nums}
+.bars .r{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;margin:8px 0}
+.bars .b{height:20px;background:var(--b5);border:2px solid var(--line)}.bars .b i{display:block;height:100%;background:var(--b3);transition:width .5s}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px;margin-bottom:14px}
+h2{margin:0 0 8px;font:800 16px "Courier New",monospace}
+.stack{display:flex;height:34px;border:2px solid var(--b1);margin:8px 0}.stack div{display:flex;align-items:center;justify-content:center;color:#fff;font:700 11px "Courier New",monospace;overflow:hidden;transition:flex .4s}
+.heat{display:grid;grid-template-columns:34px repeat(5,1fr);gap:3px}
+.hc{min-height:62px;padding:4px;display:flex;flex-wrap:wrap;gap:3px;align-content:flex-start;border:2px solid rgba(0,0,0,.12)}
+.hl{display:flex;align-items:center;justify-content:center;font:700 12px "Courier New",monospace;color:var(--mut)}
+.rk{background:#0d2a6b;color:#fff;border:2px solid #fff;font:700 11px "Courier New",monospace;padding:1px 5px;cursor:pointer;height:22px}.rk.on{background:var(--gold);color:#000}
+.lv{padding:1px 8px;font-weight:700;font-size:12px;border:2px solid rgba(0,0,0,.2)}
+.Tinggi{background:#f8b4b4;color:#5c0000}.Sedang{background:#ffe08a;color:#4a3500}.Rendah{background:#b7e4c7;color:#0b3d1f}
+.tm{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-bottom:14px}
+.tm h3{margin:0;font-size:15px}.tm .nim{font:700 12px "Courier New",monospace;color:var(--b3)}
+.tm .cd{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}.tm .cd span{background:var(--b5);padding:0 6px;font:700 11px "Courier New",monospace}
+.ra{font-weight:800;text-align:center}.ra.R{background:var(--b3);color:#fff}.ra.S{background:var(--b5)}
+footer{text-align:center;color:var(--mut);padding:20px;font:12px "Courier New",monospace}
+@media (max-width:640px){main{padding:0 10px}.bars .r{grid-template-columns:100px 1fr 54px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>JADWAL PROYEK <span class="blink">_</span></h1>
+<p class="sub">Kedai Pujasera Digital · Kelompok 11 · Teknik Informatika, Universitas Samudra</p>
+<div class="badges"><span class="badge">Manajemen Proyek Perangkat Lunak</span><span class="badge">Tahap 2 — Project Planning</span><span class="badge" id="bToday"></span></div>
+</div></header>
+<main>
+<div class="stats" id="stats"></div>
+<nav class="tabs" role="tablist" id="tabs"></nav>
+
+<section class="pane on" id="p-gantt" role="tabpanel">
+ <div class="tools" id="tools"></div>
+ <div class="card detail" id="detail"><h3>Klik salah satu aktivitas</h3><p>Dependensi sebelumnya disorot oranye dan sesudahnya ungu. Arahkan kursor ke batang untuk melihat detail.</p></div>
+ <div class="gwrap" id="gwrap"></div>
+ <div class="legend"><span><i style="background:var(--b3);border-color:var(--b1)"></i>Aktivitas</span><span><i style="background:#0d2a6b;border-color:#06163a"></i>Ringkasan tahapan</span><span><i style="background:var(--grn);border-color:#00695c"></i>Rapat</span><span style="color:var(--red)">◆ Tenggat dosen</span><span><i style="border-color:#ff9800"></i>Pendahulu</span><span><i style="border-color:#ab47bc"></i>Penerus</span></div>
+</section>
+
+<section class="pane" id="p-manday" role="tabpanel">
+ <div class="g2"><div class="card bars"><h2>Manday per anggota</h2><div id="mdMem"></div></div><div class="card bars"><h2>Manday per fase</h2><div id="mdFase"></div></div></div>
+ <p style="color:var(--mut)">Metode PERT tiga titik: E = (O + 4M + P) ÷ 6. Klik judul kolom untuk mengurutkan.</p>
+ <div class="tw"><table id="tbMd"></table></div>
+</section>
+
+<section class="pane" id="p-biaya" role="tabpanel">
+ <div class="card" style="margin-bottom:14px"><h2>Kalkulator anggaran</h2>
+  <div class="tools"><label>Tarif per manday (Rp) <input type="number" id="rate" min="0" step="10000"></label><label>Cadangan (%) <input type="number" id="cont" min="0" max="50" step="1"></label><button class="btn" id="rst">Kembalikan asumsi</button></div>
+  <div class="stack" id="stack"></div><div id="sumTxt"></div></div>
+ <div class="tw"><table id="tbCost"></table></div>
+ <p style="color:var(--mut)">Biaya tenaga kerja adalah nilai setara (nonkas). Harga kuota, transportasi, dan cetak adalah asumsi.</p>
+</section>
+
+<section class="pane" id="p-risiko" role="tabpanel">
+ <div class="g2"><div class="card"><h2>Peta risiko (probabilitas × dampak)</h2><div class="heat" id="heat"></div><p style="color:var(--mut);margin:6px 0 0;font-size:12px">Sumbu kiri = probabilitas (1–5), bawah = dampak (1–5). Klik kode risiko untuk detail.</p></div>
+ <div class="card" id="rDetail"><h2>Detail risiko</h2><p style="color:var(--mut)">Pilih risiko pada peta atau tabel.</p></div></div>
+ <div class="tools" id="rTools"></div>
+ <div class="tw"><table id="tbRisk"></table></div>
+</section>
+
+<section class="pane" id="p-tim" role="tabpanel">
+ <div class="tm" id="tm"></div>
+ <h2>Matriks tanggung jawab (RACI)</h2><div class="tw"><table id="tbRaci"></table></div>
+ <h2 style="margin-top:16px">Kebutuhan sumber daya</h2><div class="tw"><table id="tbRes"></table></div>
+</section>
+</main>
+<footer>KELOMPOK 11 · UNIVERSITAS SAMUDRA · 2026 &nbsp;|&nbsp; data dari Tahap2_Project_Planning_Kedai_Pujasera.xlsx</footer>
+<div class="tip" id="tip"></div>
+<script>
+const D = {"tasks":[{"code":"2.3","name":"Menyusun jadwal kegiatan dan Gantt Chart","pic":"Hafiz","dur":2,"deps":"Mulai proyek","start":"2026-10-19","end":"2026-10-20","type":"Aktivitas","phase":"2","fase":"Perencanaan","n":1,"o":1,"m":1.5,"p":2.5,"e":1.58,"per":[0,1.58,0,0]},{"code":"2.5","name":"Menyusun Resource & Responsibility Plan","pic":"Andi","dur":2,"deps":"Mulai proyek","start":"2026-10-19","end":"2026-10-20","type":"Aktivitas","phase":"2","fase":"Perencanaan","n":1,"o":1,"m":1.5,"p":2.5,"e":1.58,"per":[1.58,0,0,0]},{"code":"2.6","name":"Menyusun estimasi usaha (manday)","pic":"Kharisa","dur":1,"deps":"FS: 2.3","start":"2026-10-21","end":"2026-10-21","type":"Aktivitas","phase":"2","fase":"Perencanaan","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0,0,0,0.82]},{"code":"2.7","name":"Menyusun estimasi biaya proyek","pic":"Hafiz","dur":1,"deps":"FS: 2.6","start":"2026-10-22","end":"2026-10-22","type":"Aktivitas","phase":"2","fase":"Perencanaan","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0,0.82,0,0]},{"code":"2.8","name":"Menyusun Risk Register","pic":"Arya","dur":2,"deps":"Mulai proyek","start":"2026-10-19","end":"2026-10-20","type":"Aktivitas","phase":"2","fase":"Perencanaan","n":1,"o":1,"m":1.5,"p":2.5,"e":1.58,"per":[0,0,1.58,0]},{"code":"2.9","name":"Review, kompilasi, dan unggah dokumen Tahap 2 ke GitHub","pic":"Andi, Hafiz","dur":1,"deps":"FS: 2.5, 2.7, 2.8","start":"2026-10-23","end":"2026-10-23","type":"Aktivitas","phase":"2","fase":"Perencanaan","n":2,"o":0.5,"m":1,"p":1.5,"e":1,"per":[0.5,0.5,0,0]},{"code":"3.1","name":"Mengumpulkan data menu, harga, foto, dan informasi kedai","pic":"Kharisa","dur":3,"deps":"FS: 2.9","start":"2026-10-26","end":"2026-10-28","type":"Aktivitas","phase":"3","fase":"Analisis Kebutuhan","n":1,"o":2,"m":3,"p":4,"e":3,"per":[0,0,0,3]},{"code":"3.2","name":"Menentukan kebutuhan pengguna","pic":"Andi","dur":2,"deps":"FS: 2.9","start":"2026-10-26","end":"2026-10-27","type":"Aktivitas","phase":"3","fase":"Analisis Kebutuhan","n":1,"o":1,"m":1.5,"p":2.5,"e":1.58,"per":[1.58,0,0,0]},{"code":"3.3","name":"Menyusun kebutuhan fungsional dan nonfungsional","pic":"Andi","dur":2,"deps":"FS: 3.2","start":"2026-10-28","end":"2026-10-29","type":"Aktivitas","phase":"3","fase":"Analisis Kebutuhan","n":1,"o":1,"m":1.5,"p":2.5,"e":1.58,"per":[1.58,0,0,0]},{"code":"4.1","name":"Merancang struktur informasi/halaman","pic":"Arya","dur":2,"deps":"FS: 2.9","start":"2026-10-26","end":"2026-10-27","type":"Aktivitas","phase":"4","fase":"Perancangan","n":1,"o":1,"m":1.5,"p":2.5,"e":1.58,"per":[0,0,1.58,0]},{"code":"4.2","name":"Merancang tampilan (wireframe/mockup)","pic":"Arya","dur":3,"deps":"FS: 4.1, 3.2","start":"2026-10-28","end":"2026-10-30","type":"Aktivitas","phase":"4","fase":"Perancangan","n":1,"o":2,"m":3,"p":4,"e":3,"per":[0,0,3,0]},{"code":"4.3","name":"Menentukan teknologi yang digunakan","pic":"Hafiz","dur":1,"deps":"FS: 2.9","start":"2026-10-26","end":"2026-10-26","type":"Aktivitas","phase":"4","fase":"Perancangan","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0,0.82,0,0]},{"code":"5.1","name":"Menyiapkan lingkungan pengembangan","pic":"Hafiz","dur":1,"deps":"FS: 4.3","start":"2026-10-27","end":"2026-10-27","type":"Aktivitas","phase":"5","fase":"Pengembangan","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0,0.82,0,0]},{"code":"5.2","name":"Membuat tampilan halaman","pic":"Arya","dur":6,"deps":"FS: 4.2, 5.1","start":"2026-11-02","end":"2026-11-09","type":"Aktivitas","phase":"5","fase":"Pengembangan","n":1,"o":4,"m":5.5,"p":7,"e":5.5,"per":[0,0,5.5,0]},{"code":"5.3","name":"Memasukkan menu, foto, harga, dan informasi kedai","pic":"Kharisa","dur":4,"deps":"FS: 5.2, 3.1","start":"2026-11-10","end":"2026-11-13","type":"Aktivitas","phase":"5","fase":"Pengembangan","n":1,"o":3,"m":4,"p":5,"e":4,"per":[0,0,0,4]},{"code":"5.4","name":"Mengelola versi kode melalui GitHub (berkelanjutan)","pic":"Hafiz","dur":14,"deps":"SS: 5.1","start":"2026-10-27","end":"2026-11-13","type":"Aktivitas","phase":"5","fase":"Pengembangan","n":1,"o":2,"m":3,"p":4,"e":3,"per":[0,3,0,0]},{"code":"6.1","name":"Menyusun skenario pengujian","pic":"Andi","dur":2,"deps":"FS: 3.3","start":"2026-10-30","end":"2026-11-02","type":"Aktivitas","phase":"6","fase":"Pengujian","n":1,"o":1,"m":1.5,"p":2.5,"e":1.58,"per":[1.58,0,0,0]},{"code":"6.2","name":"Menguji tampilan dan fungsi","pic":"Arya, Andi","dur":2,"deps":"FS: 5.3, 6.1","start":"2026-11-16","end":"2026-11-17","type":"Aktivitas","phase":"6","fase":"Pengujian","n":2,"o":2,"m":3,"p":4.5,"e":3.08,"per":[1.54,0,1.54,0]},{"code":"6.3","name":"Memperbaiki temuan pengujian","pic":"Kharisa, Hafiz","dur":2,"deps":"FS: 6.2","start":"2026-11-18","end":"2026-11-19","type":"Aktivitas","phase":"6","fase":"Pengujian","n":2,"o":2,"m":3,"p":4,"e":3,"per":[0,1.5,0,1.5]},{"code":"6.4","name":"Meminta masukan dari pemilik kedai","pic":"Andi","dur":1,"deps":"FS: 6.2","start":"2026-11-18","end":"2026-11-18","type":"Aktivitas","phase":"6","fase":"Pengujian","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0.82,0,0,0]},{"code":"7.1","name":"Menyusun laporan akhir proyek","pic":"Andi","dur":4,"deps":"FS: 6.3, 6.4","start":"2026-11-20","end":"2026-11-25","type":"Aktivitas","phase":"7","fase":"Dokumentasi","n":1,"o":3,"m":4,"p":5,"e":4,"per":[4,0,0,0]},{"code":"7.2","name":"Mendokumentasikan repositori dan cara penggunaan","pic":"Hafiz","dur":2,"deps":"FS: 5.4","start":"2026-11-16","end":"2026-11-17","type":"Aktivitas","phase":"7","fase":"Dokumentasi","n":1,"o":1,"m":1.5,"p":2.5,"e":1.58,"per":[0,1.58,0,0]},{"code":"7.3","name":"Menyiapkan presentasi final","pic":"Kharisa","dur":3,"deps":"FS: 9.1","start":"2026-11-24","end":"2026-11-26","type":"Aktivitas","phase":"7","fase":"Dokumentasi","n":1,"o":2,"m":3,"p":4,"e":3,"per":[0,0,0,3]},{"code":"7.4","name":"Menyusun evaluasi pencapaian dan Lessons Learned","pic":"Arya, Kharisa","dur":1,"deps":"FS: 9.1","start":"2026-11-24","end":"2026-11-24","type":"Aktivitas","phase":"7","fase":"Dokumentasi","n":2,"o":1,"m":1.5,"p":2.5,"e":1.58,"per":[0,0,0.79,0.79]},{"code":"8.1","name":"Rekap rencana vs realisasi waktu","pic":"Hafiz","dur":1,"deps":"Tanggal tetap","start":"2026-11-10","end":"2026-11-10","type":"Aktivitas","phase":"8","fase":"Monitoring & Controlling","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0,0.82,0,0]},{"code":"8.2","name":"Rekap manday estimasi vs aktual","pic":"Kharisa","dur":1,"deps":"Tanggal tetap","start":"2026-11-11","end":"2026-11-11","type":"Aktivitas","phase":"8","fase":"Monitoring & Controlling","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0,0,0,0.82]},{"code":"8.3","name":"Rekap anggaran vs biaya aktual","pic":"Andi","dur":1,"deps":"Tanggal tetap","start":"2026-11-11","end":"2026-11-11","type":"Aktivitas","phase":"8","fase":"Monitoring & Controlling","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0.82,0,0,0]},{"code":"8.4","name":"Daftar masalah, perubahan ruang lingkup, dan tindakan korektif","pic":"Arya","dur":1,"deps":"Tanggal tetap","start":"2026-11-12","end":"2026-11-12","type":"Aktivitas","phase":"8","fase":"Monitoring & Controlling","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0,0,0.82,0]},{"code":"8.5","name":"Kompilasi dan unggah laporan Tahap 4","pic":"Andi","dur":1,"deps":"FS: 8.1, 8.2, 8.3, 8.4","start":"2026-11-13","end":"2026-11-13","type":"Aktivitas","phase":"8","fase":"Monitoring & Controlling","n":1,"o":0.5,"m":0.8,"p":1.2,"e":0.82,"per":[0.82,0,0,0]},{"code":"9.1","name":"Finalisasi produk akhir/prototipe","pic":"Hafiz, Arya","dur":2,"deps":"FS: 6.3","start":"2026-11-20","end":"2026-11-23","type":"Aktivitas","phase":"9","fase":"Penutupan Proyek","n":2,"o":1.5,"m":2,"p":3,"e":2.08,"per":[0,1.04,1.04,0]},{"code":"9.2","name":"Latihan presentasi final","pic":"Andi, Hafiz, Arya, Kharisa","dur":1,"deps":"FS: 7.1, 7.3","start":"2026-11-27","end":"2026-11-27","type":"Aktivitas","phase":"9","fase":"Penutupan Proyek","n":4,"o":0.8,"m":1,"p":1.2,"e":1,"per":[0.25,0.25,0.25,0.25]},{"code":"R1","name":"Rapat koordinasi dan notulen minggu ke-1","pic":"Andi, Hafiz, Arya, Kharisa","dur":1,"deps":"Tanggal tetap","start":"2026-10-21","end":"2026-10-21","type":"Rapat","phase":"R","fase":"Koordinasi Tim","n":4,"o":0.8,"m":1,"p":1.2,"e":1,"per":[0.25,0.25,0.25,0.25]},{"code":"R2","name":"Rapat koordinasi dan notulen minggu ke-2","pic":"Andi, Hafiz, Arya, Kharisa","dur":1,"deps":"Tanggal tetap","start":"2026-10-28","end":"2026-10-28","type":"Rapat","phase":"R","fase":"Koordinasi Tim","n":4,"o":0.8,"m":1,"p":1.2,"e":1,"per":[0.25,0.25,0.25,0.25]},{"code":"R3","name":"Rapat koordinasi dan notulen minggu ke-3","pic":"Andi, Hafiz, Arya, Kharisa","dur":1,"deps":"Tanggal tetap","start":"2026-11-04","end":"2026-11-04","type":"Rapat","phase":"R","fase":"Koordinasi Tim","n":4,"o":0.8,"m":1,"p":1.2,"e":1,"per":[0.25,0.25,0.25,0.25]},{"code":"R4","name":"Rapat koordinasi dan notulen minggu ke-4","pic":"Andi, Hafiz, Arya, Kharisa","dur":1,"deps":"Tanggal tetap","start":"2026-11-11","end":"2026-11-11","type":"Rapat","phase":"R","fase":"Koordinasi Tim","n":4,"o":0.8,"m":1,"p":1.2,"e":1,"per":[0.25,0.25,0.25,0.25]},{"code":"R5","name":"Rapat koordinasi dan notulen minggu ke-5","pic":"Andi, Hafiz, Arya, Kharisa","dur":1,"deps":"Tanggal tetap","start":"2026-11-18","end":"2026-11-18","type":"Rapat","phase":"R","fase":"Koordinasi Tim","n":4,"o":0.8,"m":1,"p":1.2,"e":1,"per":[0.25,0.25,0.25,0.25]},{"code":"R6","name":"Rapat koordinasi dan notulen minggu ke-6","pic":"Andi, Hafiz, Arya, Kharisa","dur":1,"deps":"Tanggal tetap","start":"2026-11-25","end":"2026-11-25","type":"Rapat","phase":"R","fase":"Koordinasi Tim","n":4,"o":0.8,"m":1,"p":1.2,"e":1,"per":[0.25,0.25,0.25,0.25]}],"milestones":[{"code":"M2","name":"Tahap 2 Project Planning dikumpulkan","date":"2026-10-24"},{"code":"M3","name":"Tahap 3 Project Execution dikumpulkan","date":"2026-10-31"},{"code":"M4","name":"Tahap 4 Monitoring & Controlling dikumpulkan","date":"2026-11-14"},{"code":"M5","name":"Tahap 5 Project Closure dan presentasi final","date":"2026-11-28"}],"groups":[{"name":"PERENCANAAN (TAHAP 2 — PROJECT PLANNING)","start":"2026-10-19","end":"2026-10-23","dur":5},{"name":"ANALISIS KEBUTUHAN","start":"2026-10-26","end":"2026-10-29","dur":4},{"name":"PERANCANGAN","start":"2026-10-26","end":"2026-10-30","dur":5},{"name":"PENGEMBANGAN","start":"2026-10-27","end":"2026-11-13","dur":14},{"name":"PENGUJIAN","start":"2026-10-30","end":"2026-11-19","dur":15},{"name":"DOKUMENTASI","start":"2026-11-16","end":"2026-11-26","dur":9},{"name":"MONITORING & CONTROLLING (TAHAP 4)","start":"2026-11-10","end":"2026-11-13","dur":4},{"name":"PENUTUPAN PROYEK (TAHAP 5 — CLOSURE)","start":"2026-11-20","end":"2026-11-27","dur":6},{"name":"RAPAT KOORDINASI MINGGUAN (SETIAP RABU)","start":"2026-10-21","end":"2026-11-25","dur":26}],"labor":[{"name":"Andi Saputra","role":"Analis kebutuhan dan penyusun laporan","manday":16.57,"cost":1657500},{"name":"Muhammad Hafiz Akbar","role":"Pengelola repositori dan pengembang","manday":14.22,"cost":1422500},{"name":"Arya Diansyah","role":"Perancang tampilan dan pengembang UI","manday":17.61,"cost":1760833.33333333},{"name":"Kharisa Ariyana","role":"Pengelola konten dan presentasi","manday":15.68,"cost":1567500}],"costBlocks":[[{"name":"Laptop/PC anggota","qty":4,"unit":"unit","price":0,"per":1,"total":0,"kind":"Nonkas","note":"Milik pribadi, tidak ada pembelian"},{"name":"Smartphone (foto produk dan dokumentasi)","qty":1,"unit":"unit","price":0,"per":1,"total":0,"kind":"Nonkas","note":"Milik pribadi"},{"name":"GitHub (akun dan repositori)","qty":1,"unit":"layanan","price":0,"per":1,"total":0,"kind":"Nonkas","note":"Paket gratis"},{"name":"GitHub Pages (hosting)","qty":1,"unit":"layanan","price":0,"per":1,"total":0,"kind":"Nonkas","note":"Gratis"},{"name":"Figma/Canva (rancangan tampilan)","qty":1,"unit":"layanan","price":0,"per":1,"total":0,"kind":"Nonkas","note":"Paket gratis"},{"name":"Domain kustom (opsional)","qty":0,"unit":"tahun","price":0,"per":1,"total":0,"kind":"Kas","note":"Isi jumlah dan harga bila kelompok memutuskan memakai domain sendiri"},{"name":"Kuota internet","qty":4,"unit":"orang","price":75000,"per":2,"total":600000,"kind":"Kas","note":"Asumsi Rp75.000 per orang per bulan selama 2 bulan"}],[{"name":"Transportasi ke kedai (pengumpulan data, foto, uji)","qty":3,"unit":"kunjungan","price":50000,"per":1,"total":150000,"kind":"Kas","note":"Asumsi 3 kunjungan, Rp50.000 per kunjungan; sesuaikan"},{"name":"Cetak dan penjilidan dokumen","qty":1,"unit":"paket","price":50000,"per":1,"total":50000,"kind":"Kas","note":"Asumsi, bila dosen meminta cetak"}]],"costSummary":{"contingency":720833.333333334,"B":600000,"C":200000,"A":6408333.33333333,"sub":7208333.33333333,"total":7929166.66666667,"cash":800000,"noncash":6408333.33333333,"rate":100000,"cont":0.1},"risks":[{"id":"R01","risk":"Data menu, harga, dan foto kedai terlambat atau tidak lengkap","cause":"Pemilik sibuk atau jadwal kunjungan tidak cocok","wbs":"3.1, 5.3","p":4,"i":4,"score":16,"level":"Tinggi","strategy":"Kurangi","mitigation":"Kirim daftar isian data sejak awal, jadwalkan kunjungan di minggu pertama, siapkan data sementara agar pengembangan tidak berhenti","owner":"Kharisa","trigger":"Data belum lengkap pada 28 Okt"},{"id":"R02","risk":"Jadwal proyek bentrok dengan kuliah dan tugas lain","cause":"Tenggat mata kuliah lain berdekatan","wbs":"Semua","p":4,"i":3,"score":12,"level":"Sedang","strategy":"Kurangi","mitigation":"Rapat mingguan untuk menata ulang beban, beri ruang cadangan pada jadwal, utamakan jalur kritis","owner":"Andi","trigger":"Aktivitas mundur lebih dari 2 hari kerja"},{"id":"R03","risk":"Estimasi manday dan durasi terlalu optimis","cause":"Perkiraan O, M, P belum teruji","wbs":"2.6, 2.3","p":3,"i":4,"score":12,"level":"Sedang","strategy":"Kurangi","mitigation":"Pakai PERT tiga titik, tinjau tiap minggu, perbarui estimasi pada Tahap 4","owner":"Hafiz","trigger":"Manday aktual melebihi estimasi 20%"},{"id":"R04","risk":"Perubahan ruang lingkup (mis. pemilik meminta pemesanan online)","cause":"Harapan pemilik berkembang di tengah proyek","wbs":"3.2, 4.x","p":3,"i":4,"score":12,"level":"Sedang","strategy":"Hindari","mitigation":"Catat sebagai permintaan perubahan, nilai dampak waktu dan biaya, putuskan bersama dosen; tetap pada ruang lingkup Project Charter","owner":"Andi","trigger":"Ada permintaan fitur di luar charter"},{"id":"R05","risk":"Anggota berhalangan (sakit atau keperluan keluarga)","cause":"Kondisi tak terduga","wbs":"Semua","p":3,"i":4,"score":12,"level":"Sedang","strategy":"Kurangi","mitigation":"Dokumentasikan pekerjaan di GitHub, tentukan anggota pendukung tiap tugas (lihat matriks RACI)","owner":"Andi","trigger":"Anggota tidak aktif lebih dari 3 hari"},{"id":"R06","risk":"Cacat ditemukan banyak saat pengujian dan mepet tenggat","cause":"Pengujian baru dilakukan di akhir","wbs":"6.2, 6.3","p":3,"i":4,"score":12,"level":"Sedang","strategy":"Kurangi","mitigation":"Uji bertahap sejak 5.2, sisakan 2 hari perbaikan sebelum penutupan","owner":"Arya","trigger":"Lebih dari 10 temuan pada 6.2"},{"id":"R07","risk":"Anggota belum terbiasa Git/GitHub sehingga berkas tertimpa atau konflik","cause":"Pengalaman Git terbatas","wbs":"5.4","p":3,"i":3,"score":9,"level":"Sedang","strategy":"Kurangi","mitigation":"Latihan bersama, aturan branch dan pull request, commit kecil dan sering","owner":"Hafiz","trigger":"Konflik penggabungan berulang"},{"id":"R08","risk":"Koneksi internet tidak stabil saat unggah atau rapat daring","cause":"Gangguan jaringan","wbs":"Semua","p":3,"i":3,"score":9,"level":"Sedang","strategy":"Terima","mitigation":"Commit lokal lalu push saat koneksi baik, rapat tatap muka bila perlu","owner":"Hafiz","trigger":"Unggah gagal lebih dari 2 kali"},{"id":"R09","risk":"Menu atau harga berubah setelah data dikumpulkan","cause":"Penyesuaian harga oleh pemilik","wbs":"5.3","p":4,"i":2,"score":8,"level":"Sedang","strategy":"Kurangi","mitigation":"Konfirmasi ulang sebelum pemasukan konten, rancang konten agar mudah diperbarui","owner":"Kharisa","trigger":"Pemilik menyebut perubahan harga"},{"id":"R10","risk":"Harapan pemilik berbeda dengan rancangan tim","cause":"Rancangan tidak ditunjukkan lebih awal","wbs":"4.2, 6.4","p":2,"i":4,"score":8,"level":"Sedang","strategy":"Kurangi","mitigation":"Tunjukkan wireframe lebih awal dan minta persetujuan sebelum pengembangan","owner":"Arya","trigger":"Pemilik meminta perubahan besar pada tampilan"},{"id":"R11","risk":"Berkas lokal hilang atau rusak","cause":"Kerusakan perangkat atau salah hapus","wbs":"Semua","p":2,"i":4,"score":8,"level":"Sedang","strategy":"Kurangi","mitigation":"Simpan di GitHub dan cadangan di penyimpanan daring","owner":"Hafiz","trigger":"Berkas belum ter-push lebih dari 3 hari"},{"id":"R12","risk":"Foto produk kurang berkualitas","cause":"Pencahayaan dan latar tidak sesuai","wbs":"3.1, 5.3","p":3,"i":2,"score":6,"level":"Rendah","strategy":"Kurangi","mitigation":"Panduan sederhana pencahayaan, ambil ulang foto bila perlu","owner":"Kharisa","trigger":"Foto buram atau gelap"},{"id":"R13","risk":"Layanan hosting gratis tidak tersedia atau bermasalah","cause":"Kebijakan layanan berubah","wbs":"5.x, 9.1","p":1,"i":3,"score":3,"level":"Rendah","strategy":"Terima","mitigation":"Siapkan alternatif hosting gratis lain","owner":"Hafiz","trigger":"Situs tidak bisa diakses"}],"team":[{"name":"Andi Saputra","nim":"230504081","role":"Analis kebutuhan dan penyusun laporan","resp":"Analisis kebutuhan pengguna, skenario pengujian, masukan pemilik kedai, laporan akhir, review dokumen","codes":"2.5, 2.9, 3.2, 3.3, 6.1, 6.2, 6.4, 7.1, 8.3, 8.5, 9.2 + rapat mingguan","manday":16.57},{"name":"Muhammad Hafiz Akbar","nim":"230504077","role":"Pengelola repositori dan pengembang","resp":"Jadwal dan biaya proyek, teknologi, lingkungan pengembangan, pengelolaan GitHub, finalisasi produk","codes":"2.3, 2.7, 2.9, 4.3, 5.1, 5.4, 6.3, 7.2, 8.1, 9.1, 9.2 + rapat mingguan","manday":14.22},{"name":"Arya Diansyah","nim":"230504063","role":"Perancang tampilan dan pengembang UI","resp":"Risk register, struktur halaman, wireframe/mockup, pembuatan tampilan, pengujian, evaluasi","codes":"2.8, 4.1, 4.2, 5.2, 6.2, 7.4, 8.4, 9.1, 9.2 + rapat mingguan","manday":17.61},{"name":"Kharisa Ariyana","nim":"230504069","role":"Pengelola konten dan presentasi","resp":"Estimasi manday, pengumpulan data kedai, pemasukan konten, perbaikan temuan, presentasi final","codes":"2.6, 3.1, 5.3, 6.3, 7.3, 7.4, 8.2, 9.2 + rapat mingguan","manday":15.68}],"raci":[["Jadwal dan Gantt Chart","S","R","C","I","I","-"],["Resource & Responsibility Plan","R","S","C","C","I","-"],["Estimasi manday dan biaya","C","R","C","R","I","-"],["Risk Register","S","C","R","C","I","-"],["Pengumpulan data menu, harga, foto","S","I","I","R","-","C"],["Kebutuhan pengguna dan sistem","R","C","C","S","I","C"],["Perancangan struktur dan tampilan","C","C","R","S","I","C"],["Pengelolaan repositori GitHub","S","R","S","S","I","-"],["Pembuatan tampilan halaman","I","S","R","C","I","-"],["Pemasukan konten kedai","I","I","C","R","-","C"],["Pengujian dan perbaikan","R","S","R","S","I","C"],["Laporan akhir dan evaluasi","R","S","S","S","C","I"],["Presentasi final","S","S","S","R","C","-"]],"resources":[["Anggota tim","Manusia","4 orang","Tersedia","Seluruh aktivitas","Total manday lihat sheet Effort Manday"],["Pemilik/pengelola Kedai Pujasera","Manusia (narasumber)","1 orang","Perlu dijadwalkan","3.1, 5.3, 6.4","Sumber data menu, harga, foto, dan masukan"],["Dosen pengampu","Manusia (pembimbing)","1 orang","Tersedia","Seluruh tahap","Arahan dan penilaian"],["Laptop/PC","Perangkat","4 unit","Milik pribadi (asumsi)","4.x, 5.x, dokumen","Konfirmasi semua anggota memiliki"],["Smartphone dengan kamera","Perangkat","minimal 1","Milik pribadi (asumsi)","3.1, 5.3","Untuk foto produk dan dokumentasi"],["Git dan GitHub","Layanan","1 repositori","Gratis","2.9, 5.4, 7.2","Bukti kolaborasi Tahap 3"],["GitHub Pages","Layanan hosting","1 situs","Gratis","5.x, 9.1","Alternatif hosting bila diperlukan"],["Figma/Canva (paket gratis)","Perangkat lunak","1 akun","Gratis","4.2","Wireframe dan mockup"],["Editor kode dan peramban","Perangkat lunak","4 set","Gratis","5.1–5.3","Contoh: VS Code"],["Aplikasi dokumen dan lembar kerja","Perangkat lunak","4 set","Tersedia (asumsi)","2.x, 7.x, 8.x","Word/Excel atau padanannya"],["Koneksi internet dan aplikasi pesan","Infrastruktur","4 akses","Pribadi","Seluruh aktivitas","Rapat daring dan koordinasi"],["Akses ke lokasi kedai","Lain-lain","sesuai kebutuhan","Perlu dijadwalkan","3.1, 6.4","Pengumpulan data dan uji bersama pemilik"]],"deadlines":[{"date":"2026-10-24","stage":"Tahap 2 — Project Planning","finish":"2026-10-23","left":1},{"date":"2026-10-31","stage":"Tahap 3 — Project Execution","finish":"2026-10-30","left":1},{"date":"2026-11-14","stage":"Tahap 4 — Monitoring & Controlling","finish":"2026-11-13","left":1},{"date":"2026-11-28","stage":"Tahap 5 — Project Closure","finish":"2026-11-27","left":1}],"fase":{"2":"Perencanaan","3":"Analisis Kebutuhan","4":"Perancangan","5":"Pengembangan","6":"Pengujian","7":"Dokumentasi","8":"Monitoring & Controlling","9":"Penutupan","R":"Rapat Koordinasi","M":"Milestone"},"totalManday":64.08,"totalMandayRaw":64.0833333333333,"start":"2026-10-19","end":"2026-11-28"};
+const $=s=>document.querySelector(s), el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const rp=n=>'Rp'+Math.round(n).toLocaleString('id-ID');
+const DAY=864e5, S0=new Date(D.start+'T00:00:00'), S1=new Date(D.end+'T00:00:00'), ND=Math.round((S1-S0)/DAY)+1;
+const dIdx=s=>Math.round((new Date(s+'T00:00:00')-S0)/DAY);
+const fmt=s=>new Date(s+'T00:00:00').toLocaleDateString('id-ID',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+const MEM=['Andi','Hafiz','Arya','Kharisa'];
+const T=D.tasks, byCode=Object.fromEntries(T.map(t=>[t.code,t]));
+const preds={},succs={};
+T.forEach(t=>{const m=(t.deps||'').match(/^(FS|SS):\s*(.+)$/);preds[t.code]=m?m[2].split(',').map(x=>x.trim()).filter(x=>byCode[x]):[];preds[t.code].forEach(p=>(succs[p]=succs[p]||[]).push(t.code))});
+const phases=Object.keys(D.fase).filter(k=>k!=='M');
+const tip=$('#tip');
+function showTip(e,h){tip.innerHTML=h;tip.style.opacity=1;const w=tip.offsetWidth,x=Math.min(e.clientX+14,innerWidth-w-8);tip.style.left=Math.max(8,x)+'px';tip.style.top=(e.clientY+16+tip.offsetHeight>innerHeight?e.clientY-tip.offsetHeight-10:e.clientY+16)+'px'}
+const hideTip=()=>tip.style.opacity=0;
+const today=new Date();today.setHours(0,0,0,0);
+$('#bToday').textContent='Hari ini: '+today.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+
+/* ---- stats ---- */
+const S=D.costSummary, hi=D.risks.filter(r=>r.level==='Tinggi').length;
+[[D.totalManday,'total manday'],[T.filter(t=>t.type==='Aktivitas').length,'aktivitas'],[D.milestones.length,'milestone tenggat'],[rp(S.total),'anggaran baseline'],[D.risks.length+' ('+hi+' tinggi)','risiko tercatat']].forEach(([v,l])=>$('#stats').append(el('div','card stat',`<b>${v}</b><span>${l}</span>`)));
+
+/* ---- tabs ---- */
+const TABS=[['gantt','GANTT'],['manday','MANDAY'],['biaya','BIAYA'],['risiko','RISIKO'],['tim','TIM & RACI']];
+TABS.forEach(([id,l],i)=>{const b=el('button','tab',l);b.role='tab';b.setAttribute('aria-selected',i===0);b.onclick=()=>go(id);b.dataset.id=id;$('#tabs').append(b)});
+function go(id){document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.id===id));document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+id));if(id==='gantt')renderGantt();history.replaceState(null,'','#'+id)}
+
+/* ---- gantt ---- */
+const st={ph:new Set(phases),pic:'',q:'',rap:true,dw:24,sel:null};
+const tools=$('#tools');
+const chipBox=el('div');chipBox.style.cssText='display:flex;gap:6px;flex-wrap:wrap';
+phases.forEach(k=>{const c=el('button','chip on',D.fase[k]);c.onclick=()=>{st.ph.has(k)?st.ph.delete(k):st.ph.add(k);c.classList.toggle('on');renderGantt()};chipBox.append(c)});
+const sel=el('select');sel.innerHTML='<option value="">Semua anggota</option>'+MEM.map(m=>`<option>${m}</option>`).join('');sel.onchange=()=>{st.pic=sel.value;renderGantt()};
+const q=el('input');q.type='search';q.placeholder='Cari aktivitas…';q.oninput=()=>{st.q=q.value.toLowerCase();renderGantt()};
+const rapL=el('label','',`<input type="checkbox" checked> Tampilkan rapat`);rapL.querySelector('input').onchange=e=>{st.rap=e.target.checked;renderGantt()};
+const zoom=el('input');zoom.type='range';zoom.min=12;zoom.max=44;zoom.value=st.dw;zoom.oninput=()=>{st.dw=+zoom.value;renderGantt()};zoom.setAttribute('aria-label','Zoom');
+const toT=el('button','btn','KE HARI INI');toT.onclick=()=>scrollToday();
+tools.append(chipBox,sel,q,rapL,el('label','','Zoom '),zoom,toT);
+function scrollToday(){const i=Math.round((today-S0)/DAY),w=$('#gwrap');w.scrollLeft=Math.max(0,310+(i<0?0:i)*st.dw-w.clientWidth/3)}
+
+function renderGantt(){
+  const dw=st.dw,LW=310,W=ND*dw,wrap=$('#gwrap');wrap.innerHTML='';wrap.style.setProperty('--lw',LW+'px');wrap.style.setProperty('--dw',dw+'px');
+  const keep=wrap.scrollLeft;
+  const h=el('div','ghead');h.append(el('div','lab','AKTIVITAS'));
+  const tr=el('div');tr.style.width=W+'px';
+  const mon=el('div','mon');let cur=-1,cnt=0,lab='';
+  for(let i=0;i<=ND;i++){const d=new Date(S0.getTime()+i*DAY);const m=i<ND?d.getMonth():-2;if(m!==cur){if(cnt)mon.append(Object.assign(el('div','',lab),{style:`width:${cnt*dw}px`}));cur=m;cnt=0;lab=i<ND?d.toLocaleDateString('id-ID',{month:'long',year:'numeric'}).toUpperCase():''}cnt++}
+  const days=el('div','days');for(let i=0;i<ND;i++){const d=new Date(S0.getTime()+i*DAY);days.append(el('div','day',dw>=18?d.getDate():''))}
+  tr.append(mon,days);h.append(tr);wrap.append(h);
+  const body=el('div');body.style.cssText='position:relative;min-width:max-content';
+  const gl=el('div','gridlayer');gl.style.cssText=`left:${LW}px;width:${W}px`;
+  for(let i=0;i<ND;i++){const d=new Date(S0.getTime()+i*DAY).getDay();if(d===0||d===6){const w=el('div','wkd');w.style.cssText=`left:${i*dw}px;width:${dw}px`;gl.append(w)}}
+  const ti=Math.round((today-S0)/DAY);if(ti>=0&&ti<ND){const t=el('div','today','<b>HARI INI</b>');t.style.left=(ti*dw+dw/2)+'px';gl.append(t)}
+  body.append(gl);
+  const vis=t=>st.ph.has(t.phase)&&(st.rap||t.type!=='Rapat')&&(!st.pic||t.pic.includes(st.pic))&&(!st.q||(t.code+' '+t.name).toLowerCase().includes(st.q));
+  const hl=new Set(),pre=new Set(),suc=new Set();
+  if(st.sel){hl.add(st.sel);(preds[st.sel]||[]).forEach(x=>pre.add(x));(succs[st.sel]||[]).forEach(x=>suc.add(x))}
+  function row(cls,labHtml,track,onclick){const r=el('div','grow '+cls);const l=el('div','lab',labHtml);const t=el('div','track');t.style.width=W+'px';track(t);r.append(l,t);if(onclick)r.onclick=onclick;body.append(r);return r}
+  // milestones
+  row('grp','<span class="code">◆</span><span class="t">TENGGAT DOSEN</span>',t=>D.milestones.forEach(m=>{const i=dIdx(m.date);const d=el('div','ms');d.style.left=(i*dw+dw/2)+'px';d.onmousemove=e=>showTip(e,`<b>${m.code}</b><br>${esc(m.name)}<br>${fmt(m.date)}`);d.onmouseleave=hideTip;t.append(d);const lb=el('div','mslab',m.code);lb.style.left=(i*dw+dw/2+12)+'px';t.append(lb)}));
+  D.groups.forEach((g,gi)=>{
+    const key=phases[gi];const items=T.filter(t=>t.phase===key&&vis(t));if(!items.length)return;
+    const gs=Math.min(...items.map(t=>dIdx(t.start))),ge=Math.max(...items.map(t=>dIdx(t.end)));
+    row('grp',`<span class="code">${key==='R'?'R':key}</span><span class="t">${esc(D.fase[key].toUpperCase())}</span>`,t=>{const b=el('div','bar sum');b.style.cssText=`left:${gs*dw}px;width:${(ge-gs+1)*dw}px`;b.onmousemove=e=>showTip(e,`<b>${esc(D.fase[key])}</b><br>${fmt(items.reduce((a,t)=>t.start<a?t.start:a,items[0].start))} – ${fmt(items.reduce((a,t)=>t.end>a?t.end:a,items[0].end))}<br>${items.length} aktivitas · ${items.reduce((a,t)=>a+t.e,0).toFixed(1)} manday`);b.onmouseleave=hideTip;t.append(b)});
+    items.forEach(t0=>{
+      const cls=[t0.type==='Rapat'?'rap':'',hl.size&&!hl.has(t0.code)&&!pre.has(t0.code)&&!suc.has(t0.code)?'dim':'',hl.has(t0.code)?'me':'',pre.has(t0.code)?'pre':'',suc.has(t0.code)?'suc':''].join(' ');
+      const r=row(st.sel===t0.code?'sel':'',`<span class="code">${t0.code}</span><span class="t" title="${esc(t0.name)}">${esc(t0.name)}</span>`,t=>{
+        const b=el('div','bar '+cls,`<i>${dw*(dIdx(t0.end)-dIdx(t0.start)+1)>60?t0.pic.split(',')[0]:''}</i>`);b.style.cssText=`left:${dIdx(t0.start)*dw}px;width:${(dIdx(t0.end)-dIdx(t0.start)+1)*dw}px`;
+        b.onmousemove=e=>showTip(e,`<b>${t0.code}</b> ${esc(t0.name)}<br>PIC: ${esc(t0.pic)}<br>${fmt(t0.start)} → ${fmt(t0.end)}<br>Durasi ${t0.dur} hari kerja · ${t0.e} manday<br>Dependensi: ${esc(t0.deps)}`);b.onmouseleave=hideTip;t.append(b)},
+        ()=>{st.sel=st.sel===t0.code?null:t0.code;renderGantt();showDetail()});
+    });
+  });
+  wrap.append(body);wrap.scrollLeft=keep;
+}
+function showDetail(){const d=$('#detail'),t=byCode[st.sel];if(!t){d.innerHTML='<h3>Klik salah satu aktivitas</h3><p>Dependensi sebelumnya disorot oranye dan sesudahnya ungu.</p>';return}
+  const f=a=>a.length?a.map(c=>`<b>${c}</b>`).join(', '):'—';
+  d.innerHTML=`<h3>${t.code} · ${esc(t.name)}</h3><p>PIC <b>${esc(t.pic)}</b> · ${fmt(t.start)} → ${fmt(t.end)} · ${t.dur} hari kerja · ${t.e} manday (O ${t.o} / M ${t.m} / P ${t.p})<br>Menunggu: ${f(preds[t.code]||[])} &nbsp;|&nbsp; Mendahului: ${f(succs[t.code]||[])}</p>`}
+
+/* ---- manday ---- */
+function bars(box,rows,max){box.innerHTML=rows.map(([n,v])=>`<div class="r"><span>${esc(n)}</span><div class="b"><i style="width:${v/max*100}%"></i></div><b class="n">${v.toFixed(1)}</b></div>`).join('')}
+const per=MEM.map((_,i)=>T.reduce((a,t)=>a+(t.per?t.per[i]:0),0));
+bars($('#mdMem'),D.team.map((m,i)=>[m.name,per[i]]),Math.max(...per));
+const ph={};T.forEach(t=>ph[D.fase[t.phase]]=(ph[D.fase[t.phase]]||0)+t.e);bars($('#mdFase'),Object.entries(ph),Math.max(...Object.values(ph)));
+function sortable(tb,head,rows,render,init){let key=init??-1,asc=true;function draw(){const r=rows.slice();if(key>=0)r.sort((a,b)=>{const x=a[key],y=b[key];return (typeof x==='number'&&typeof y==='number'?x-y:String(x).localeCompare(String(y),'id',{numeric:true}))*(asc?1:-1)});
+  tb.innerHTML='<thead><tr>'+head.map((h,i)=>`<th class="s" data-i="${i}">${h}${key===i?(asc?' ▲':' ▼'):''}</th>`).join('')+'</tr></thead><tbody>'+r.map(render).join('')+'</tbody>';
+  tb.querySelectorAll('th').forEach(th=>th.onclick=()=>{const i=+th.dataset.i;asc=key===i?!asc:true;key=i;draw()})}draw();return draw}
+sortable($('#tbMd'),['Kode','Aktivitas','PIC','O','M','P','Manday','Durasi'],T.map(t=>[t.code,t.name,t.pic,t.o,t.m,t.p,t.e,t.dur]),r=>`<tr><td><b>${r[0]}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td class="n">${r[3]}</td><td class="n">${r[4]}</td><td class="n">${r[5]}</td><td class="n"><b>${r[6]}</b></td><td class="n">${r[7]} hari</td></tr>`);
+
+/* ---- biaya ---- */
+const rate=$('#rate'),cont=$('#cont');rate.value=S.rate;cont.value=Math.round(S.cont*100);
+function costDraw(){const R=+rate.value||0,C=(+cont.value||0)/100,A=D.totalMandayRaw*R,sub=A+S.B+S.C,cg=sub*C,tot=sub+cg;
+  const seg=[['Tenaga kerja',A,'#1565c0'],['Perangkat',S.B,'#29b6f6'],['Overhead',S.C,'#26a69a'],['Cadangan',cg,'#e53935']];
+  $('#stack').innerHTML=seg.map(([n,v,c])=>`<div style="flex:${Math.max(v,tot*.02)};background:${c}" title="${n}: ${rp(v)}">${v/tot>.08?n:''}</div>`).join('');
+  $('#sumTxt').innerHTML=`<p style="margin:6px 0 0"><b class="mono" style="font-size:22px">${rp(tot)}</b> total anggaran · tunai langsung <b>${rp(S.cash)}</b> · nilai tenaga kerja nonkas <b>${rp(A)}</b></p>`}
+rate.oninput=cont.oninput=costDraw;$('#rst').onclick=()=>{rate.value=S.rate;cont.value=Math.round(S.cont*100);costDraw()};costDraw();
+let tb='<thead><tr><th>Komponen</th><th>Jumlah</th><th>Satuan</th><th>Harga satuan</th><th>Periode</th><th>Total</th><th>Jenis</th><th>Catatan</th></tr></thead><tbody>';
+tb+=`<tr><td colspan="8" style="background:var(--b5)"><b>A. Tenaga kerja (nonkas)</b></td></tr>`+D.labor.map(l=>`<tr><td>${esc(l.name)}</td><td class="n">${l.manday} manday</td><td></td><td class="n">${rp(S.rate)}</td><td></td><td class="n">${rp(l.cost)}</td><td>Nonkas</td><td>${esc(l.role)}</td></tr>`).join('');
+['B. Perangkat dan layanan','C. Overhead dan operasional'].forEach((n,i)=>{tb+=`<tr><td colspan="8" style="background:var(--b5)"><b>${n}</b></td></tr>`+D.costBlocks[i].map(x=>`<tr><td>${esc(x.name)}</td><td class="n">${x.qty}</td><td>${esc(x.unit)}</td><td class="n">${rp(x.price)}</td><td class="n">${x.per}</td><td class="n">${rp(x.total)}</td><td>${x.kind}</td><td>${esc(x.note)}</td></tr>`).join('')});
+$('#tbCost').innerHTML=tb+'</tbody>';
+
+/* ---- risiko ---- */
+const R=D.risks;let rsel=null,rlv='Semua';
+const lvl=s=>s>=15?'Tinggi':s>=8?'Sedang':'Rendah';
+function heat(){const h=$('#heat');h.innerHTML='';for(let p=5;p>=1;p--){h.append(el('div','hl',p));for(let i=1;i<=5;i++){const s=p*i,c=el('div','hc');c.style.background={Tinggi:'#f8b4b4',Sedang:'#ffe08a',Rendah:'#b7e4c7'}[lvl(s)];R.filter(r=>r.p===p&&r.i===i).forEach(r=>{const b=el('button','rk'+(rsel===r.id?' on':''),r.id);b.onclick=()=>{rsel=r.id;heat();rd();rt()};b.onmousemove=e=>showTip(e,`<b>${r.id}</b> (skor ${r.score})<br>${esc(r.risk)}`);b.onmouseleave=hideTip;c.append(b)});h.append(c)}}
+  h.append(el('div'));for(let i=1;i<=5;i++)h.append(el('div','hl',i))}
+function rd(){const r=R.find(x=>x.id===rsel);if(!r)return;$('#rDetail').innerHTML=`<h2>${r.id} · <span class="lv ${r.level}">${r.level} (${r.score})</span></h2><p><b>${esc(r.risk)}</b></p><p style="color:var(--mut)">Penyebab: ${esc(r.cause)}</p><p><b>${r.strategy}:</b> ${esc(r.mitigation)}</p><p>Pemilik: <b>${esc(r.owner)}</b> · WBS ${esc(r.wbs)}<br>Pemicu: ${esc(r.trigger)}</p>`}
+const rT=$('#rTools');['Semua','Tinggi','Sedang','Rendah'].forEach(l=>{const b=el('button','chip'+(l==='Semua'?' on':''),l);b.onclick=()=>{rlv=l;rTools.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b));rt()};rT.append(b)});const rTools=rT;
+let rKey=6,rAsc=false;
+function rt(){const rows=R.filter(r=>rlv==='Semua'||r.level===rlv).sort((a,b)=>{const k=['id','risk','cause','wbs','p','i','score','level','strategy','mitigation','owner','trigger'][rKey];const x=a[k],y=b[k];return (typeof x==='number'?x-y:String(x).localeCompare(String(y),'id'))*(rAsc?1:-1)});
+  const H=['ID','Risiko','Penyebab','WBS','P','I','Skor','Tingkat','Strategi','Mitigasi','Pemilik','Pemicu'];
+  $('#tbRisk').innerHTML='<thead><tr>'+H.map((h,i)=>`<th class="s" data-i="${i}">${h}${rKey===i?(rAsc?' ▲':' ▼'):''}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>`<tr style="${rsel===r.id?'outline:3px solid var(--gold)':''}" data-id="${r.id}"><td><b>${r.id}</b></td><td>${esc(r.risk)}</td><td>${esc(r.cause)}</td><td>${esc(r.wbs)}</td><td class="n">${r.p}</td><td class="n">${r.i}</td><td class="n"><b>${r.score}</b></td><td><span class="lv ${r.level}">${r.level}</span></td><td>${r.strategy}</td><td>${esc(r.mitigation)}</td><td>${esc(r.owner)}</td><td>${esc(r.trigger)}</td></tr>`).join('')+'</tbody>';
+  $('#tbRisk').querySelectorAll('th').forEach(th=>th.onclick=()=>{const i=+th.dataset.i;rAsc=rKey===i?!rAsc:false;rKey=i;rt()});
+  $('#tbRisk').querySelectorAll('tbody tr').forEach(tr=>tr.onclick=()=>{rsel=tr.dataset.id;heat();rd();rt()})}
+heat();rt();rsel=R.slice().sort((a,b)=>b.score-a.score)[0].id;heat();rd();rt();
+
+/* ---- tim ---- */
+D.team.forEach((m,i)=>{const c=el('div','card',`<h3>${esc(m.name)}</h3><div class="nim">NIM ${m.nim}</div><p style="margin:6px 0"><b>${esc(m.role)}</b></p><p style="color:var(--mut);margin:0">${esc(m.resp)}</p><p style="margin:8px 0 0"><b class="mono">${m.manday}</b> manday</p><div class="cd">${m.codes.replace(' + rapat mingguan','').split(', ').map(x=>`<span>${x}</span>`).join('')}</div>`);$('#tm').append(c)});
+$('#tbRaci').innerHTML='<thead><tr><th>Pekerjaan</th>'+['Andi','Hafiz','Arya','Kharisa','Dosen','Pemilik kedai'].map(x=>`<th>${x}</th>`).join('')+'</tr></thead><tbody>'+D.raci.map(r=>`<tr><td>${esc(r[0])}</td>${r.slice(1).map(x=>`<td class="ra ${x}">${x}</td>`).join('')}</tr>`).join('')+'</tbody>';
+$('#tbRes').innerHTML='<thead><tr><th>Sumber daya</th><th>Kategori</th><th>Jumlah</th><th>Status</th><th>Dipakai untuk</th><th>Catatan</th></tr></thead><tbody>'+D.resources.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')+'</tbody>';
+
+renderGantt();
+const h0=location.hash.slice(1);if(TABS.some(t=>t[0]===h0))go(h0);else setTimeout(scrollToday,50);
+</script>
+</body>
+</html>

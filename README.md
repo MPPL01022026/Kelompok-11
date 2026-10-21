@@ -7,7 +7,8 @@
 [![Tentang](https://img.shields.io/badge/TENTANG-0d47a1?style=for-the-badge)](#tentang)
 [![Tim](https://img.shields.io/badge/TIM-1565c0?style=for-the-badge)](#tim)
 [![Level](https://img.shields.io/badge/LEVEL-1976d2?style=for-the-badge)](#level)
-[![Dokumen](https://img.shields.io/badge/DOKUMEN-1e88e5?style=for-the-badge)](#dokumen)
+[![Jadwal](https://img.shields.io/badge/JADWAL-1e88e5?style=for-the-badge)](#jadwal)
+[![Dokumen](https://img.shields.io/badge/DOKUMEN-29b6f6?style=for-the-badge)](#dokumen)
 [![Cara Main](https://img.shields.io/badge/CARA%20MAIN-0288d1?style=for-the-badge)](#cara-main)
 
 ![Status](https://img.shields.io/badge/status-tahap%20perencanaan-1565c0?style=flat-square)
@@ -26,7 +27,7 @@
 
 > 🎯 **MISI:** membuat versi digital Kedai Pujasera supaya pelanggan bisa melihat menu, foto, harga, dan info kedai kapan saja.
 > 🕹️ **PEMAIN:** Kelompok 11, 4 orang.
-> 🏁 **STAGE SAAT INI:** perencanaan. Tahap Inisiasi dan Perencanaan sudah selesai.
+> 🏁 **TAHAP TUGAS SAAT INI:** Tahap 2 — Project Planning (tenggat 24 Okt 2026). Jadwal, resource plan, manday, biaya, dan risiko sudah disusun.
 
 Kedai Pujasera adalah UMKM yang menjual berbagai makanan dan minuman. Karena pilihan menunya beragam, kedai ini membutuhkan cara yang baik untuk memperkenalkan menu dan informasi usahanya kepada pelanggan.
 
@@ -183,6 +184,38 @@ Klik tiap level untuk melihat isinya.
 - [ ] Pengujian
 - [ ] Dokumentasi akhir
 
+<a id="jadwal"></a>
+## 📅 Jadwal Proyek (Tahap 2 — Project Planning)
+
+<div align="center">
+<img src="assets/gantt.svg" alt="Gantt ringkas 9 tahapan proyek, 19 Oktober sampai 27 November 2026" width="100%">
+</div>
+
+> 🔎 **Versi interaktif:** buka **[halaman Gantt interaktif](https://mppl01022026.github.io/NAMA-REPO/)** *(ganti `NAMA-REPO` dengan nama repositori ini; aktifkan di Settings → Pages)*. Di sana ada filter per anggota dan fase, tooltip, sorotan dependensi, kalkulator anggaran, dan peta risiko.
+
+### 🎯 Tenggat dan Tahap Tugas
+
+| Tahap | Isi | Tenggat | Status |
+|:-:|---|:-:|:-:|
+| 1 | Penentuan ide, Project Charter, Stakeholder Register, WBS, Git dan GitHub | selesai | ✅ |
+| 2 | **Project Planning:** jadwal/Gantt, resource plan, manday, biaya, risk register | 24 Okt 2026 | 🔄 |
+| 3 | **Project Execution:** pembagian tugas, progres, catatan rapat, bukti kolaborasi | 31 Okt 2026 | ⏳ |
+| 4 | **Monitoring & Controlling:** rencana vs realisasi (waktu, manday, biaya), masalah dan tindakan korektif | 14 Nov 2026 | ⏳ |
+| 5 | **Project Closure:** produk akhir, dokumentasi, evaluasi, lessons learned, presentasi | 28 Nov 2026 | ⏳ |
+
+### 📦 Dokumen Tahap 2
+
+| Output | Dokumen |
+|---|---|
+| Project Schedule / Gantt Chart | [Jadwal dan Gantt Chart](docs/tahap-2-project-planning/jadwal-gantt.md) |
+| Resource & Responsibility Plan | [Resource Plan dan RACI](docs/tahap-2-project-planning/resource-plan.md) |
+| Effort Estimation (Manday) | [Estimasi Manday](docs/tahap-2-project-planning/effort-manday.md) |
+| Project Cost Estimation | [Estimasi Biaya](docs/tahap-2-project-planning/estimasi-biaya.md) |
+| Risk Register | [Risk Register](docs/tahap-2-project-planning/risk-register.md) |
+| Semua dalam satu berkas | [Tahap2_Project_Planning_Kedai_Pujasera.xlsx](docs/tahap-2-project-planning/Tahap2_Project_Planning_Kedai_Pujasera.xlsx) |
+
+<img src="assets/divider.svg" width="100%" alt="">
+
 <img src="assets/divider.svg" width="100%" alt="">
 
 <a id="dokumen"></a>
@@ -195,6 +228,11 @@ Klik tiap level untuk melihat isinya.
 | 3 | [Stakeholder Register](docs/stakeholder-register.md) | Pihak terlibat, peran, kepentingan, pengaruh, rencana komunikasi | ✅ |
 | 4 | [Work Breakdown Structure](docs/wbs.md) | Pecahan pekerjaan dari inisiasi sampai dokumentasi | ✅ |
 | 5 | [Git dan GitHub](docs/git-github.md) | Pemahaman dasar dan alur kerja tim | ✅ |
+| 6 | [Jadwal dan Gantt Chart](docs/tahap-2-project-planning/jadwal-gantt.md) | Aktivitas, durasi, dependensi, milestone | ✅ |
+| 7 | [Resource Plan](docs/tahap-2-project-planning/resource-plan.md) | Peran, tanggung jawab, RACI, sumber daya | ✅ |
+| 8 | [Estimasi Manday](docs/tahap-2-project-planning/effort-manday.md) | Usaha per aktivitas (PERT) | ✅ |
+| 9 | [Estimasi Biaya](docs/tahap-2-project-planning/estimasi-biaya.md) | Tenaga kerja, perangkat, overhead, cadangan | ✅ |
+| 10 | [Risk Register](docs/tahap-2-project-planning/risk-register.md) | Risiko, skor, dan mitigasi | ✅ |
 
 <details>
 <summary><b>📁 Struktur repositori</b></summary>
@@ -202,10 +240,13 @@ Klik tiap level untuk melihat isinya.
 ```text
 .
 ├── README.md
+├── index.html                 (Gantt interaktif, GitHub Pages)
 ├── assets/
 │   ├── banner.svg
 │   ├── divider.svg
 │   ├── footer.svg
+│   ├── gantt.svg
+│   ├── gantt.png
 │   ├── levels.svg
 │   └── team.svg
 └── docs/
@@ -213,7 +254,14 @@ Klik tiap level untuk melihat isinya.
     ├── project-charter.md
     ├── stakeholder-register.md
     ├── wbs.md
-    └── git-github.md
+    ├── git-github.md
+    └── tahap-2-project-planning/
+        ├── jadwal-gantt.md
+        ├── resource-plan.md
+        ├── effort-manday.md
+        ├── estimasi-biaya.md
+        ├── risk-register.md
+        └── Tahap2_Project_Planning_Kedai_Pujasera.xlsx
 ```
 
 </details>
