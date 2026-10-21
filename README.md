@@ -27,7 +27,7 @@
 
 > 🎯 **MISI:** membuat versi digital Kedai Pujasera supaya pelanggan bisa melihat menu, foto, harga, dan info kedai kapan saja.
 > 🕹️ **PEMAIN:** Kelompok 11, 4 orang.
-> 🏁 **TAHAP TUGAS SAAT INI:** Tahap 2 — Project Planning (tenggat 24 Okt 2026). Jadwal, resource plan, manday, biaya, dan risiko sudah disusun.
+> 🏁 **TAHAP TUGAS SAAT INI:** Tahap 3 — Project Execution (tenggat 31 Okt 2026). Dokumen Tahap 2 sudah disusun; pembagian tugas, progres prototipe, catatan rapat, dan bukti kolaborasi Tahap 3 kini ada di repositori.
 
 Kedai Pujasera adalah UMKM yang menjual berbagai makanan dan minuman. Karena pilihan menunya beragam, kedai ini membutuhkan cara yang baik untuk memperkenalkan menu dan informasi usahanya kepada pelanggan.
 
@@ -191,15 +191,15 @@ Klik tiap level untuk melihat isinya.
 <img src="assets/gantt.svg" alt="Gantt ringkas 9 tahapan proyek, 19 Oktober sampai 27 November 2026" width="100%">
 </div>
 
-> 🔎 **Versi interaktif:** buka **[halaman Gantt interaktif](https://mppl01022026.github.io/Kelompok-11/)** 
+> 🔎 **Versi interaktif:** buka **[halaman Gantt interaktif](https://mppl01022026.github.io/NAMA-REPO/)** *(ganti `NAMA-REPO` dengan nama repositori ini; aktifkan di Settings → Pages)*. Di sana ada filter per anggota dan fase, tooltip, sorotan dependensi, kalkulator anggaran, dan peta risiko.
 
 ### 🎯 Tenggat dan Tahap Tugas
 
 | Tahap | Isi | Tenggat | Status |
 |:-:|---|:-:|:-:|
 | 1 | Penentuan ide, Project Charter, Stakeholder Register, WBS, Git dan GitHub | selesai | ✅ |
-| 2 | **Project Planning:** jadwal/Gantt, resource plan, manday, biaya, risk register | 24 Okt 2026 | 🔄 |
-| 3 | **Project Execution:** pembagian tugas, progres, catatan rapat, bukti kolaborasi | 31 Okt 2026 | ⏳ |
+| 2 | **Project Planning:** jadwal/Gantt, resource plan, manday, biaya, risk register | 24 Okt 2026 | ✅ |
+| 3 | **Project Execution:** pembagian tugas, progres, catatan rapat, bukti kolaborasi | 31 Okt 2026 | 🔄 |
 | 4 | **Monitoring & Controlling:** rencana vs realisasi (waktu, manday, biaya), masalah dan tindakan korektif | 14 Nov 2026 | ⏳ |
 | 5 | **Project Closure:** produk akhir, dokumentasi, evaluasi, lessons learned, presentasi | 28 Nov 2026 | ⏳ |
 
@@ -214,7 +214,14 @@ Klik tiap level untuk melihat isinya.
 | Risk Register | [Risk Register](docs/tahap-2-project-planning/risk-register.md) |
 | Semua dalam satu berkas | [Tahap2_Project_Planning_Kedai_Pujasera.xlsx](docs/tahap-2-project-planning/Tahap2_Project_Planning_Kedai_Pujasera.xlsx) |
 
-<img src="assets/divider.svg" width="100%" alt="">
+### 🚧 Dokumen Tahap 3
+
+| Output | Dokumen |
+|---|---|
+| Pembagian tugas dan bukti pelaksanaan | [Pembagian Tugas](docs/tahap-3-project-execution/pembagian-tugas.md) |
+| Progres pengembangan aplikasi/prototipe | [Progres Pengembangan](docs/tahap-3-project-execution/progres-pengembangan.md) · [Prototipe v0.1](prototype/index.html) |
+| Catatan rapat dan koordinasi tim | [Catatan Rapat](docs/tahap-3-project-execution/catatan-rapat.md) |
+| Bukti kolaborasi GitHub | [Bukti Kolaborasi](docs/tahap-3-project-execution/bukti-kolaborasi.md) |
 
 <img src="assets/divider.svg" width="100%" alt="">
 
@@ -233,6 +240,10 @@ Klik tiap level untuk melihat isinya.
 | 8 | [Estimasi Manday](docs/tahap-2-project-planning/effort-manday.md) | Usaha per aktivitas (PERT) | ✅ |
 | 9 | [Estimasi Biaya](docs/tahap-2-project-planning/estimasi-biaya.md) | Tenaga kerja, perangkat, overhead, cadangan | ✅ |
 | 10 | [Risk Register](docs/tahap-2-project-planning/risk-register.md) | Risiko, skor, dan mitigasi | ✅ |
+| 11 | [Pembagian Tugas](docs/tahap-3-project-execution/pembagian-tugas.md) | Pekerjaan, PIC, status, bukti | 🔄 |
+| 12 | [Progres Pengembangan](docs/tahap-3-project-execution/progres-pengembangan.md) | Kondisi prototipe, yang belum ada, rencana | 🔄 |
+| 13 | [Catatan Rapat](docs/tahap-3-project-execution/catatan-rapat.md) | Notulen rapat mingguan dan tindak lanjut | 🔄 |
+| 14 | [Bukti Kolaborasi](docs/tahap-3-project-execution/bukti-kolaborasi.md) | Aturan, tautan, dan rekap kontribusi GitHub | 🔄 |
 
 <details>
 <summary><b>📁 Struktur repositori</b></summary>
@@ -241,6 +252,8 @@ Klik tiap level untuk melihat isinya.
 .
 ├── README.md
 ├── index.html                 (Gantt interaktif, GitHub Pages)
+├── prototype/
+│   └── index.html             (prototipe halaman Kedai Pujasera v0.1)
 ├── assets/
 │   ├── banner.svg
 │   ├── divider.svg
@@ -250,6 +263,11 @@ Klik tiap level untuk melihat isinya.
 │   ├── levels.svg
 │   └── team.svg
 └── docs/
+    ├── tahap-3-project-execution/
+    │   ├── pembagian-tugas.md
+    │   ├── progres-pengembangan.md
+    │   ├── catatan-rapat.md
+    │   └── bukti-kolaborasi.md
     ├── ide-proyek.md
     ├── project-charter.md
     ├── stakeholder-register.md

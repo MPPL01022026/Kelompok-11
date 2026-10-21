@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kedai Pujasera — Prototipe v0.1</title>
+<style>
+:root{--bg:#f4f7f3;--ink:#1c2b24;--muted:#5b6b63;--green:#1f5a41;--orange:#e8801a;--line:#d5ddd6;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,sans-serif;line-height:1.55}
+header{background:var(--green);color:#fff;padding:2.5rem 1.25rem 2rem}
+.wrap{max-width:960px;margin:0 auto}
+h1{margin:0 0 .4rem;font-size:clamp(1.9rem,5vw,3rem);line-height:1.1;letter-spacing:-.02em}
+header p{margin:0;max-width:52ch;color:#d9ece1}
+.badge{display:inline-block;margin-top:1rem;padding:.2rem .7rem;border-radius:99px;background:var(--orange);color:#1c1000;font-size:.85rem;font-weight:600}
+main{padding:1.5rem 1.25rem 3rem}
+h2{font-size:1.4rem;margin:2rem 0 .8rem}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap}
+.filters button{border:1.5px solid var(--green);background:transparent;color:var(--green);padding:.45rem 1rem;border-radius:8px;font:inherit;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--green);color:#fff}
+button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;margin-top:1rem}
+.item{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.photo{height:120px;display:grid;place-items:center;font-size:2.8rem;background:#e3ebe4}
+.photo.minuman{background:#fde9d2}
+.body{padding:.8rem .9rem 1rem}
+.body h3{margin:0;font-size:1.05rem}
+.kat{color:var(--muted);font-size:.88rem}
+.harga{margin-top:.5rem;font-weight:600}
+.harga.pending{color:var(--muted);font-weight:400;font-style:italic}
+.info{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem 1.2rem}
+.info dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:.4rem 1.2rem}
+.info dt{font-weight:600}.info dd{margin:0;color:var(--muted)}
+footer{padding:1.2rem;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Kedai Pujasera</h1>
+<p>Lihat menu, foto, harga, dan informasi kedai kapan saja.</p>
+<span class="badge">Prototipe v0.1 — data menyusul</span>
+</div></header>
+<main><div class="wrap">
+<h2>Menu</h2>
+<div class="filters" role="group" aria-label="Filter menu">
+<button type="button" data-f="semua" aria-pressed="true">Semua</button>
+<button type="button" data-f="Makanan" aria-pressed="false">Makanan</button>
+<button type="button" data-f="Minuman" aria-pressed="false">Minuman</button>
+</div>
+<div class="grid" id="grid" aria-live="polite"></div>
+
+<h2>Informasi kedai</h2>
+<div class="info"><dl>
+<dt>Alamat</dt><dd id="alamat"></dd>
+<dt>Jam buka</dt><dd id="jam"></dd>
+<dt>Kontak</dt><dd id="kontak"></dd>
+</dl></div>
+</div></main>
+<footer>Kelompok 11 · MPPL · Universitas Samudra</footer>
+<script>
+/* Semua data kedai ada di sini supaya mudah diperbarui (mitigasi risiko R09).
+   harga: null = belum dikonfirmasi pemilik. Isi angka (rupiah) setelah tugas 3.1 selesai. */
+const DATA = {
+  kedai: { alamat: null, jam: null, kontak: null },
+  menu: [
+    { nama: "Nasi ayam caplak", kategori: "Makanan", ikon: "🍗", harga: null },
+    { nama: "Nasi goreng",      kategori: "Makanan", ikon: "🍛", harga: null },
+    { nama: "Jus",              kategori: "Minuman", ikon: "🍹", harga: null },
+    { nama: "Es teh",           kategori: "Minuman", ikon: "🍵", harga: null },
+    { nama: "Minuman sachet",   kategori: "Minuman", ikon: "🧃", harga: null }
+  ]
+};
+const rp = n => "Rp" + n.toLocaleString("id-ID");
+const grid = document.getElementById("grid");
+function render(f){
+  grid.innerHTML = "";
+  DATA.menu.filter(m => f === "semua" || m.kategori === f).forEach(m => {
+    const el = document.createElement("article");
+    el.className = "item";
+    el.innerHTML = '<div class="photo ' + m.kategori.toLowerCase() + '" aria-hidden="true">' + m.ikon + '</div>' +
+      '<div class="body"><h3></h3><div class="kat"></div><div class="harga"></div></div>';
+    el.querySelector("h3").textContent = m.nama;
+    el.querySelector(".kat").textContent = m.kategori;
+    const h = el.querySelector(".harga");
+    if (m.harga == null){ h.textContent = "Harga menyusul"; h.classList.add("pending"); }
+    else h.textContent = rp(m.harga);
+    grid.appendChild(el);
+  });
+}
+document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render(b.dataset.f);
+}));
+["alamat","jam","kontak"].forEach(k => {
+  document.getElementById(k).textContent = DATA.kedai[k] || "Menyusul setelah pengumpulan data (3.1)";
+});
+render("semua");
+</script>
+</body>
+</html>
