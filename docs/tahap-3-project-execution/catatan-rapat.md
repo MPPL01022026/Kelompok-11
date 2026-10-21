@@ -10,10 +10,10 @@ Rapat koordinasi dijadwalkan setiap **Rabu** (lihat jadwal R1–R6). Notulen dit
 
 | | |
 | --- | --- |
-| Bentuk | *isi: tatap muka / daring (platform)* |
-| Waktu | *isi: jam mulai–selesai* |
-| Hadir | *isi: centang yang hadir* — ☐ Andi ☐ Hafiz ☐ Arya ☐ Kharisa |
-| Notulis | *isi* |
+| Bentuk | *tatap muka* |
+| Waktu | *14.00–18.00* |
+| Hadir | *✓ Andi ✓ Hafiz ✓ Arya ✓ Kharisa* |
+| Notulis | *Andi* |
 
 **Agenda**
 
@@ -26,11 +26,11 @@ Rapat koordinasi dijadwalkan setiap **Rabu** (lihat jadwal R1–R6). Notulen dit
 
 | No | Pokok bahasan | Keputusan | PIC | Tenggat |
 | --- | --- | --- | --- | --- |
-| 1 | *isi* | *isi* | *isi* | *isi* |
-| 2 | *isi* | *isi* | *isi* | *isi* |
-| 3 | *isi* | *isi* | Kharisa | *isi* |
+| 1 | *Peninjauan dokumen Tahap 2* | *Tim melakukan pemeriksaan ulang terhadap jadwal proyek, resource plan, manday, estimasi biaya, dan risk register. Dokumen yang masih perlu diperbaiki akan direvisi sebelum diunggah ke repositori.* | *Andi dan Hafiz* | *22 Oktober 2026* |
+| 2 | *Pembagian tugas Tahap 3 dan kerangka halaman* | *Tim menyepakati penyelesaian pengumpulan data, analisis kebutuhan, penyusunan struktur halaman, pembuatan wireframe, serta persiapan lingkungan pengembangan. Kerangka halaman versi 0.1 akan dijadikan acuan awal pengembangan.* | *Arya dan Hafiz* | *30 Oktober 2026* |
+| 3 | *Pengumpulan data kedai dan mitigasi risiko R01* | *Kharisa bertugas menghubungi pemilik kedai untuk meminta izin dan mengatur pengumpulan data yang dibutuhkan. Jika pemilik kedai belum memberikan respons, tim akan melakukan tindak lanjut dan mempertimbangkan alternatif sumber data.* | Kharisa | *26 Oktober 2026* |
 
-**Kendala yang disampaikan:** *isi, atau tulis "tidak ada"*
+**Kendala yang disampaikan:** *Pengumpulan data masih bergantung pada kesediaan pemilik kedai untuk memberikan informasi. Oleh karena itu, tim perlu melakukan komunikasi lebih awal agar proses pengumpulan data tidak menghambat penyelesaian Tahap 3.*
 
 **Bukti:** *isi: tangkapan layar rapat daring atau foto rapat, simpan di `assets/rapat/rapat-1.png`*
 
