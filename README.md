@@ -64,7 +64,7 @@ Proyek ini adalah tugas kelompok dengan studi kasus Kedai Pujasera. Kami berenca
 
 | No | Nama | NIM | GitHub | Peran utama |
 |:-:|---|---|---|---|
-| 1 | Andi Saputra | `230504081` | [`Andi`](https://github.com/Andi) | Inisiasi, skenario pengujian, laporan proyek |
+| 1 | Andi Saputra | `230504081` | [`Andyganteng`](https://github.com/saputraandy95570-crypto) | Inisiasi, skenario pengujian, laporan proyek |
 | 2 | Muhammad Hafiz Akbar | `230504077` | [`Apizzz2`](https://github.com/Apizzz2) | Perencanaan, repositori GitHub, dokumentasi repo |
 | 3 | Arya Diansyah | `230504063` | [`Aryajisung11`](https://github.com/Aryajisung11) | Perancangan, tampilan halaman, pengujian |
 | 4 | Kharisa Ariyana | `230504069` | [`Ica`](https://github.com/Ica) | Analisis kebutuhan, konten kedai, presentasi |
@@ -191,8 +191,7 @@ Klik tiap level untuk melihat isinya.
 <img src="assets/gantt.svg" alt="Gantt ringkas 9 tahapan proyek, 19 Oktober sampai 27 November 2026" width="100%">
 </div>
 
-> 🔎 **Versi interaktif:** buka **[halaman Gantt interaktif](https://mppl01022026.github.io/NAMA-REPO/)** *(ganti `NAMA-REPO` dengan nama repositori ini; aktifkan di Settings → Pages)*. Di sana ada filter per anggota dan fase, tooltip, sorotan dependensi, kalkulator anggaran, dan peta risiko.
-
+> 🔎 **Versi interaktif:** buka **[halaman Gantt interaktif](https://mppl01022026.github.io/Kelompok-11/)**
 ### 🎯 Tenggat dan Tahap Tugas
 
 | Tahap | Isi | Tenggat | Status |
