@@ -191,7 +191,7 @@ Klik tiap level untuk melihat isinya.
 <img src="assets/gantt.svg" alt="Gantt ringkas 9 tahapan proyek, 19 Oktober sampai 27 November 2026" width="100%">
 </div>
 
-> 🔎 **Versi interaktif:** buka **[halaman Gantt interaktif](https://mppl01022026.github.io/NAMA-REPO/)** *(ganti `NAMA-REPO` dengan nama repositori ini; aktifkan di Settings → Pages)*. Di sana ada filter per anggota dan fase, tooltip, sorotan dependensi, kalkulator anggaran, dan peta risiko.
+> 🔎 **Versi interaktif:** buka **[halaman Gantt interaktif](https://mppl01022026.github.io/Kelompok-11/)** 
 
 ### 🎯 Tenggat dan Tahap Tugas
 
