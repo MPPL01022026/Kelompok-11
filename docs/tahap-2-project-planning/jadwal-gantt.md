@@ -4,10 +4,6 @@
 
 ---
 
-Jadwal disusun dari WBS (Bab IV laporan awal) dengan hari kerja Senin–Jumat. Durasi berasal dari estimasi manday, dan tiap aktivitas dihubungkan lewat dependensi *Finish-to-Start* (FS) atau *Start-to-Start* (SS). Tenggat tahap mengikuti jadwal dosen.
-
-> 🔎 **Versi interaktif** (filter, tooltip, dan sorotan dependensi) ada di `index.html` dan bisa dibuka lewat GitHub Pages.
-
 ![Gantt ringkas](../../assets/gantt.svg)
 
 ## Gantt Chart
