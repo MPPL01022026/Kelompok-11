@@ -11,7 +11,7 @@
 [![Dokumen](https://img.shields.io/badge/DOKUMEN-29b6f6?style=for-the-badge)](#dokumen)
 [![Cara Main](https://img.shields.io/badge/CARA%20MAIN-0288d1?style=for-the-badge)](#cara-main)
 
-![Status](https://img.shields.io/badge/status-tahap%20perencanaan-1565c0?style=flat-square)
+![Status](https://img.shields.io/badge/status-tahap%20monitoring-1565c0?style=flat-square)
 ![Kelompok](https://img.shields.io/badge/kelompok-11-0288d1?style=flat-square)
 ![Prodi](https://img.shields.io/badge/Teknik%20Informatika-Universitas%20Samudra-00b4ff?style=flat-square)
 ![Matkul](https://img.shields.io/badge/MPPL-Manajemen%20Proyek%20Perangkat%20Lunak-0d47a1?style=flat-square)
@@ -27,7 +27,7 @@
 
 > 🎯 **MISI:** membuat versi digital Kedai Pujasera supaya pelanggan bisa melihat menu, foto, harga, dan info kedai kapan saja.
 > 🕹️ **PEMAIN:** Kelompok 11, 4 orang.
-> 🏁 **TAHAP TUGAS SAAT INI:** Tahap 3 — Project Execution (tenggat 31 Okt 2026). Dokumen Tahap 2 sudah disusun; pembagian tugas, progres prototipe, catatan rapat, dan bukti kolaborasi Tahap 3 kini ada di repositori.
+> 🏁 **TAHAP TUGAS SAAT INI:** Tahap 4 — Monitoring & Controlling (tenggat 26 Nov 2026), disusul Tahap 5 — Project Closure (3 Des 2026). Dokumen Tahap 2 dan 3 sudah ada di repositori; dokumen Tahap 4 dan 5 sedang diisi.
 
 Kedai Pujasera adalah UMKM yang menjual berbagai makanan dan minuman. Karena pilihan menunya beragam, kedai ini membutuhkan cara yang baik untuk memperkenalkan menu dan informasi usahanya kepada pelanggan.
 
@@ -199,8 +199,8 @@ Klik tiap level untuk melihat isinya.
 | 1 | Penentuan ide, Project Charter, Stakeholder Register, WBS, Git dan GitHub | selesai | ✅ |
 | 2 | **Project Planning:** jadwal/Gantt, resource plan, manday, biaya, risk register | 24 Okt 2026 | ✅ |
 | 3 | **Project Execution:** pembagian tugas, progres, catatan rapat, bukti kolaborasi | 31 Okt 2026 | 🔄 |
-| 4 | **Monitoring & Controlling:** rencana vs realisasi (waktu, manday, biaya), masalah dan tindakan korektif | 14 Nov 2026 | ⏳ |
-| 5 | **Project Closure:** produk akhir, dokumentasi, evaluasi, lessons learned, presentasi | 28 Nov 2026 | ⏳ |
+| 4 | **Monitoring & Controlling:** rencana vs realisasi (waktu, manday, biaya), masalah dan tindakan korektif | 26 Nov 2026 | 🔄 |
+| 5 | **Project Closure:** produk akhir, dokumentasi, evaluasi, lessons learned, presentasi | 3 Des 2026 | ⏳ |
 
 ### 📦 Dokumen Tahap 2
 
@@ -221,6 +221,25 @@ Klik tiap level untuk melihat isinya.
 | Progres pengembangan aplikasi/prototipe | [Progres Pengembangan](docs/tahap-3-project-execution/progres-pengembangan.md) · [Prototipe v0.1](prototype/index.html) |
 | Catatan rapat dan koordinasi tim | [Catatan Rapat](docs/tahap-3-project-execution/catatan-rapat.md) |
 | Bukti kolaborasi GitHub | [Bukti Kolaborasi](docs/tahap-3-project-execution/bukti-kolaborasi.md) |
+
+### 📊 Dokumen Tahap 4
+
+| Output | Dokumen |
+|---|---|
+| Rencana vs realisasi waktu | [Rekap Waktu](docs/tahap-4-monitoring-controlling/rekap-waktu.md) |
+| Manday estimasi vs aktual | [Manday Aktual](docs/tahap-4-monitoring-controlling/manday-aktual.md) |
+| Anggaran vs biaya aktual | [Anggaran Aktual](docs/tahap-4-monitoring-controlling/anggaran-aktual.md) |
+| Masalah, perubahan ruang lingkup, tindakan korektif | [Masalah dan Tindakan Korektif](docs/tahap-4-monitoring-controlling/masalah-perubahan-korektif.md) |
+
+### 🏁 Dokumen Tahap 5
+
+| Output | Dokumen |
+|---|---|
+| Produk akhir atau prototipe | [Produk Akhir](docs/tahap-5-project-closure/produk-akhir.md) |
+| Dokumentasi hasil pengujian | [Hasil Pengujian](docs/tahap-5-project-closure/hasil-pengujian.md) |
+| Evaluasi pencapaian tujuan | [Evaluasi Pencapaian](docs/tahap-5-project-closure/evaluasi-pencapaian.md) |
+| Lessons Learned dan laporan akhir | [Lessons Learned](docs/tahap-5-project-closure/lessons-learned.md) · [Laporan Akhir](docs/tahap-5-project-closure/laporan-akhir.md) |
+| Presentasi final | [Presentasi Final](docs/tahap-5-project-closure/presentasi-final.md) |
 
 <img src="assets/divider.svg" width="100%" alt="">
 
@@ -243,6 +262,8 @@ Klik tiap level untuk melihat isinya.
 | 12 | [Progres Pengembangan](docs/tahap-3-project-execution/progres-pengembangan.md) | Kondisi prototipe, yang belum ada, rencana | 🔄 |
 | 13 | [Catatan Rapat](docs/tahap-3-project-execution/catatan-rapat.md) | Notulen rapat mingguan dan tindak lanjut | 🔄 |
 | 14 | [Bukti Kolaborasi](docs/tahap-3-project-execution/bukti-kolaborasi.md) | Aturan, tautan, dan rekap kontribusi GitHub | 🔄 |
+| 15 | [Rekap Waktu, Manday, Anggaran](docs/tahap-4-monitoring-controlling/README.md) | Rencana vs realisasi, masalah, tindakan korektif | 🔄 |
+| 16 | [Project Closure](docs/tahap-5-project-closure/README.md) | Produk akhir, pengujian, evaluasi, lessons learned, presentasi | ⏳ |
 
 <details>
 <summary><b>📁 Struktur repositori</b></summary>
@@ -262,6 +283,8 @@ Klik tiap level untuk melihat isinya.
 │   ├── levels.svg
 │   └── team.svg
 └── docs/
+    ├── tahap-5-project-closure/
+    ├── tahap-4-monitoring-controlling/
     ├── tahap-3-project-execution/
     │   ├── pembagian-tugas.md
     │   ├── progres-pengembangan.md
