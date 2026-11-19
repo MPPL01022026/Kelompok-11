@@ -78,7 +78,7 @@ Proyek ini adalah tugas kelompok dengan studi kasus Kedai Pujasera. Kami berenca
 ## 🗺️ Peta Level Proyek
 
 <div align="center">
-<img src="assets/levels.svg" alt="Peta level: 2 dari 7 tahap selesai, tahap 3 Analisis sedang berikutnya" width="100%">
+<img src="assets/levels.svg" alt="Peta level: 5 dari 7 tahap selesai, tahap 6 Pengujian sedang berjalan" width="100%">
 </div>
 
 Klik tiap level untuk melihat isinya.
@@ -114,7 +114,7 @@ Klik tiap level untuk melihat isinya.
 </details>
 
 <details>
-<summary><b>🔹 LEVEL 3 — Analisis Kebutuhan</b> &nbsp; ▶ berikutnya</summary>
+<summary><b>⭐ LEVEL 3 — Analisis Kebutuhan</b> &nbsp; ✅ selesai</summary>
 
 <br>
 
@@ -127,7 +127,7 @@ Klik tiap level untuk melihat isinya.
 </details>
 
 <details>
-<summary><b>🔒 LEVEL 4 — Perancangan</b></summary>
+<summary><b>⭐ LEVEL 4 — Perancangan</b> &nbsp; ✅ selesai</summary>
 
 <br>
 
@@ -140,7 +140,7 @@ Klik tiap level untuk melihat isinya.
 </details>
 
 <details>
-<summary><b>🔒 LEVEL 5 — Pengembangan</b></summary>
+<summary><b>⭐ LEVEL 5 — Pengembangan</b> &nbsp; ✅ selesai</summary>
 
 <br>
 
@@ -152,7 +152,7 @@ Klik tiap level untuk melihat isinya.
 </details>
 
 <details>
-<summary><b>🔒 LEVEL 6 — Pengujian</b></summary>
+<summary><b>🔹 LEVEL 6 — Pengujian</b> &nbsp; ▶ sedang berjalan</summary>
 
 <br>
 
@@ -178,9 +178,9 @@ Klik tiap level untuk melihat isinya.
 
 - [x] Inisiasi: studi kasus, ide proyek, Project Charter, Stakeholder Register
 - [x] Perencanaan: WBS, pembagian tugas, pemahaman Git dan GitHub
-- [ ] Analisis kebutuhan
-- [ ] Perancangan
-- [ ] Pengembangan
+- [x] Analisis kebutuhan
+- [x] Perancangan
+- [x] Pengembangan
 - [ ] Pengujian
 - [ ] Dokumentasi akhir
 
